@@ -1,0 +1,20 @@
+MEV 파라미터 설정 참고 자료
+
+1. BlockScholes - Ethereum Staking Deep Dive: Analysing Execution Layer Rewards & MEV
+   URL: https://www.blockscholes.com/research/ethereum-staking-deep-dive---analysing-execution-layer-rewards-mev
+   
+   주요 발견:
+   - Execution layer rewards: 총 보상의 20% (Priority fees 17%, MEV 3%)
+   - MEV 평균: 0.038 ETH/block
+   - 99.99th percentile: 28.873 ETH/block
+   - 52% 블록이 0 MEV
+   - MEV clustering 및 가격 변동성과의 상관관계
+
+2. Flashbots - Quantifying MEV
+   URL: https://writings.flashbots.net/quantifying-mev
+   
+   MEV 측정 방법론 및 분포 특성
+
+3. The Marginal Effects of Ethereum Network MEV Transaction Re-Ordering.pdf
+   MEV 트랜잭션 재정렬의 한계 효과 분석
+

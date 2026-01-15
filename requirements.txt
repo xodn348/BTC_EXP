@@ -1,0 +1,17 @@
+pandas>=2.2
+pyarrow>=15.0
+numpy>=1.26
+requests>=2.32
+pyyaml>=6.0
+matplotlib>=3.8
+seaborn>=0.13
+tqdm>=4.66
+
+# Optional: For price data fetching
+yfinance>=0.2
+
+# Optional: For PDF extraction
+PyPDF2>=3.0
+
+# Optional: For BigQuery data fetching
+google-cloud-bigquery>=3.0

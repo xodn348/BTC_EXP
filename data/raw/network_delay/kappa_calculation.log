@@ -1,0 +1,78 @@
+# kappa Calculation Log
+# Generated: 2025-12-21 14:41:29
+
+## 1. Block Height Range
+Block height: 790,000 - 890,000
+Period: 2023-05-16 ~ 2025-03-29
+
+## 2. Data Sources
+- Block data: blocks_blockchain_com_790000_890000_*.csv
+- Network delay data: invstat.gpd (KIT)
+- Matched data points: 99,575
+
+## 3. Calculation Method
+Linear regression: delay_ms = base_delay + kappa * B_MB
+
+### 3.0 What is Linear Regression?
+Linear regression finds the best-fit line through all (B_MB, delay_ms) data points to find the formula: delay_ms = base_delay + kappa * B_MB
+
+**Process:**
+1. Input: 99,575 matched (B_MB, delay_ms) pairs
+2. Find the best-fit line through all data points
+3. Result:
+   - base_delay (intercept) = 742 ms (where line crosses y-axis)
+   - kappa (slope) = 26.40 ms/MB (how much delay increases per 1 MB)
+
+### 3.1 Matching Process
+1. **Block data**: Each block has a timestamp (block creation time) and block size (B_MB = weight / 1e6)
+2. **Delay data**: Each record represents a 1-hour aggregated network delay measurement
+   - **Important**: There is approximately 1 record per day (not continuous hourly data)
+   - start_datetime: Start of the 1-hour interval
+   - end_datetime: End of the 1-hour interval
+   - block_p50_ms: 50th percentile block propagation delay for that hour
+3. **Matching logic**: For each block, find the delay record where:
+   ```
+   delay_record.start_datetime <= block.timestamp < delay_record.end_datetime
+   ```
+   - If no exact match, use the delay record from the same date
+   - This means all blocks from the same day use the same delay value
+4. **Result**: Each matched block gets a (B_MB, delay_ms) pair
+5. **Filtering**: Used only valid delay values (delay_ms > 0)
+
+### 3.2 Data Frequency
+- **Delay data frequency**: ~24 records per day (continuous 1-hour intervals)
+  - For block height 790,000-890,000 period: average 23.95 records/day
+  - 662 days have exactly 24 records (full day coverage)
+- **Block frequency**: ~144 blocks per day (continuous)
+- **Matching**: Each block is matched to its corresponding 1-hour delay interval
+- **Note**: Early data (2015-2017) may have fewer records per day, but recent data (2023+) has continuous hourly coverage
+
+### 3.2 Example
+- Block A: timestamp = 2023-05-16 14:23:45, B_MB = 3.5 MB
+- Delay records:
+  - Record 1: 2023-05-16 14:00:00 ~ 15:00:00, block_p50_ms = 800 ms
+  - Record 2: 2023-05-16 15:00:00 ~ 16:00:00, block_p50_ms = 850 ms
+- Match: Block A (14:23:45) → Record 1 (14:00-15:00)
+- Result: (B_MB=3.5, delay_ms=800) pair created
+
+## 4. Results
+**base_delay = 742 ms**
+**kappa = 26.40 ms/MB**
+
+Regression statistics:
+- R-squared: 0.0004
+- Sample size: 99,371 valid data points
+
+## 5. Usage in Simulation
+Network delay calculation: **δt = 742 + 26.40 * B_MB**
+
+Where:
+- base_delay = 742 ms (base network delay independent of block size)
+- kappa = 26.40 ms/MB (additional delay per MB of block size)
+- B_MB = block size in megabytes
+
+## 6. Notes
+- Calculated from actual block data matched with network delay measurements
+- Low R-squared (0.0004) indicates block size is not the only factor affecting delay
+- Network conditions and other factors also significantly affect delay
+- Calculated kappa (26.40 ms/MB) is lower than previously assumed value (80 ms/MB)

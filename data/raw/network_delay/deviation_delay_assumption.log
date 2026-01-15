@@ -1,0 +1,70 @@
+# Deviation Propagation Delay Assumption
+
+**Date**: 2025-12-22
+
+## Assumption
+
+**Formula**: δ_dev(B) = δ_hon(B) + w
+
+Where:
+- δ_hon(B) = base_delay_ms + kappa_ms_per_MB * B_MB (honest propagation delay)
+- δ_dev(B) = deviation propagation delay
+- w = withholding delay (seconds)
+
+## Parameter Values
+
+**w values**: {0.5s, 1.0s, 2.0s}
+
+**Configuration**: [`sim/config_default.yaml`](sim/config_default.yaml) → `w_seconds: [0.5, 1.0, 2.0]`
+
+## Rationale
+
+Based on **Eyal & Sirer (Selfish Mining)** paper:
+
+1. **"seconds-scale is the core scale"** - Direct statement from the paper
+2. **Block propagation is in seconds**, while average block interval is 10 minutes
+3. **Strategic timing (=withholding)** affects the "second-unit propagation interval"
+
+### Key Points from Eyal & Sirer (2014):
+
+- The paper specifies that block propagation is in **seconds**
+- Average block interval is **10 minutes**
+- Strategic timing (=withholding) has impact in the **"second-unit propagation interval"**
+- This statement serves as a strong primary basis for setting withholding delay (w) in seconds
+
+## Reference
+
+**Eyal, I., & Sirer, E. G. (2014). Majority is not enough: Bitcoin mining is vulnerable. Communications of the ACM, 61(7), 95-102.**
+
+- **URL**: ittayeyal.github.io
+- **Key contribution**: Selfish Mining attack analysis
+- **Relevance**: Establishes that strategic timing operates at seconds-scale, not minutes-scale
+
+## Implementation
+
+**Location**: [`sim/simulate.py`](sim/simulate.py)
+
+**Code**:
+```python
+delta_sec = delta_ms / 1000.0  # Convert ms to seconds
+delta_dev_sec = delta_sec + w_sec  # δ_dev(B) = δ_hon(B) + w
+rho_dev = 1 - np.exp(-lambda_rate * delta_dev_sec)
+```
+
+## Numerical Example
+
+For B = 4MB:
+- base_delay_ms = 742 ms
+- kappa_ms_per_MB = 26.40 ms/MB
+- δ_hon(B) = 742 + 26.40 * 4 = 847.6 ms = 0.848 seconds
+
+With w = 1.0s:
+- δ_dev(B) = 0.848 + 1.0 = 1.848 seconds
+- ρ_dev = 1 - exp(-0.00167 * 1.848) ≈ 0.003081
+
+## Notes
+
+- This assumption models the additional propagation delay caused by withholding strategy
+- The seconds-scale delay (w) represents the strategic timing window where deviation can affect block acceptance
+- Different w values allow sensitivity analysis of withholding impact
+

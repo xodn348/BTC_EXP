@@ -1,0 +1,297 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{booktabs}
+
+\geometry{margin=0.8cm}
+\setlength{\columnsep}{0.6cm}
+\pagestyle{empty}
+\setlength{\parskip}{2pt}
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\titlespacing*{\section}{0pt}{6pt}{4pt}
+\titlespacing*{\subsection}{0pt}{4pt}{2pt}
+\setlist[itemize]{leftmargin=1.5em,topsep=2pt,itemsep=1pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=1.5em,topsep=2pt,itemsep=1pt,parsep=0pt}
+
+\begin{document}
+\footnotesize
+\begin{multicols}{2}
+
+\section*{Experiment Parameters Summary}
+
+\section*{1. Miner Value Function}
+
+\vspace{3pt}
+\begin{equation*}
+V_i = \mathbb{E}\left[\sum_{t=0}^{T-1} \gamma^t \, \Pi_i(S_t, a_i)\right]
+\end{equation*}
+
+\vspace{4pt}
+\textbf{Action selection:}
+\begin{equation*}
+a_i = \begin{cases} \text{honest} & \text{if } V_i^{\text{hon}} > V_i^{\text{dev}} \\ \text{deviate} & \text{otherwise} \end{cases}
+\end{equation*}
+
+\section*{2. State Variables: $S_t = \{F_t, M_t, h_i, \delta_t\}$}
+
+\vspace{3pt}
+\textbf{Fee:}
+\begin{equation*}
+F_t = F_{\text{rate}} \cdot B_{\text{MB}} \cdot vB_{\text{per MB}}
+\end{equation*}
+\begin{itemize}
+  \item $F_{\text{rate}}$: sampled from fee distribution (sat/vB)
+  \item $vB_{\text{per MB}} = 609{,}692$ vB/MB (median)
+  \item $B_{\text{MB}} \in \{1, 2, 4, 8\}$ MB
+\end{itemize}
+
+\vspace{4pt}
+\textbf{MEV:}
+\begin{equation*}
+M_t \sim \text{ZILogNormal}
+\end{equation*}
+\begin{itemize}
+  \item 80\% probability mass at zero
+\end{itemize}
+
+\vspace{4pt}
+\textbf{Miner share:}
+\begin{equation*}
+h_i \text{ (fixed)}
+\end{equation*}
+\begin{itemize}
+  \item $N=13$ miners, 99.52\% coverage
+\end{itemize}
+
+\vspace{4pt}
+\textbf{Network delay:}
+\begin{align*}
+\delta_{\text{hon}}(B) &= \delta_{\text{base}} + \kappa \cdot B_{\text{MB}} \\
+\delta_{\text{dev}}(B) &= \delta_{\text{hon}}(B) + w
+\end{align*}
+\begin{itemize}
+  \item $\delta_{\text{base}} = 742$ ms
+  \item $\kappa = 26.40$ ms/MB
+  \item $w \in \{0.5, 1.0, 2.0\}$ s
+\end{itemize}
+
+\section*{3. Payoff Function: $\Pi_i(S_t, a_i)$}
+
+\vspace{3pt}
+\textbf{Honest strategy:}
+\begin{equation*}
+\Pi_i^{\text{hon}} = p_i^{\text{hon}} \cdot X_t - C_i
+\end{equation*}
+
+\vspace{4pt}
+\textbf{Deviation strategy:}
+\begin{equation*}
+\Pi_i^{\text{dev}} = p_i^{\text{dev}} \cdot (X_t + G_t) - C_i
+\end{equation*}
+\begin{itemize}
+  \item where $X_t = F_t + M_t$
+\end{itemize}
+
+\section*{4. Success Probability: $p_i$}
+
+\vspace{3pt}
+\begin{align*}
+p_i^{\text{hon}} &= h_i \cdot (1 - \rho_{\text{hon}}(B)) \\
+p_i^{\text{dev}} &= h_i \cdot (1 - \rho_{\text{dev}}(B))
+\end{align*}
+
+\vspace{4pt}
+\textbf{Orphan rate:}
+\begin{align*}
+\rho_{\text{hon}}(B) &= 1 - e^{-\lambda \delta_{\text{hon}}(B)} \\
+\rho_{\text{dev}}(B) &= 1 - e^{-\lambda \delta_{\text{dev}}(B)}
+\end{align*}
+\begin{itemize}
+  \item $\lambda = 0.00167$ blocks/s (Bitcoin: 1 block/600s)
+\end{itemize}
+
+\section*{5. Deviation Gain: $G_t$}
+
+\vspace{3pt}
+\begin{equation*}
+G_t = \alpha \cdot (F_{t-1} + M_{t-1})
+\end{equation*}
+\begin{itemize}
+  \item $\alpha \in \{0.1, 0.25, 0.5\}$ (currently disabled: $G_t = 0$)
+\end{itemize}
+
+\section*{6. Cost: $C_i$}
+
+\vspace{3pt}
+\begin{itemize}
+  \item From miner\_cost\_curve.parquet (CBECI data, USD/block)
+\end{itemize}
+
+\columnbreak
+
+\section*{7. Parameter Values}
+
+\vspace{3pt}
+\textbf{Discount factor:}
+\begin{itemize}
+  \item $\gamma = 0.99$
+\end{itemize}
+
+\vspace{4pt}
+\textbf{Simulation:}
+\begin{itemize}
+  \item $T = 10{,}000$ rounds
+  \item $\lambda = 0.00167$ blocks/s
+\end{itemize}
+
+\vspace{4pt}
+\textbf{Block size:}
+\begin{itemize}
+  \item $B_{\text{MB}} \in \{1, 2, 4, 8\}$ MB
+\end{itemize}
+
+\vspace{4pt}
+\textbf{Network delay:}
+\begin{itemize}
+  \item $\delta_{\text{base}} = 742$ ms
+  \item $\kappa = 26.40$ ms/MB
+  \item $w \in \{0.5, 1.0, 2.0\}$ s
+\end{itemize}
+
+\vspace{4pt}
+\textbf{Base fee:}
+\begin{itemize}
+  \item basefee$_0$ = 1.0
+  \item fill\_target = 0.5
+  \item fill\_scale = 40.0 sat/vB
+  \item $\phi \in \{0.06, 0.125, 0.25\}$
+\end{itemize}
+
+\vspace{4pt}
+\textbf{Other:}
+\begin{itemize}
+  \item Fork rate threshold: $\rho = 0.05$
+  \item Deviation extraction: $\alpha \in \{0.1, 0.25, 0.5\}$
+\end{itemize}
+
+\section*{8. Formula Relationships}
+
+\vspace{3pt}
+\textbf{1. State $\rightarrow$ Delay:}
+\begin{equation*}
+\delta_{\text{hon}}(B) = 742 + 26.40 \cdot B_{\text{MB}} \quad \text{(ms)}
+\end{equation*}
+
+\vspace{4pt}
+\textbf{2. Delay $\rightarrow$ Orphan Rate:}
+\begin{equation*}
+\rho(B) = 1 - e^{-0.00167 \cdot \delta(B)}
+\end{equation*}
+
+\vspace{4pt}
+\textbf{3. Orphan Rate $\rightarrow$ Success Prob:}
+\begin{equation*}
+p_i = h_i \cdot (1 - \rho(B))
+\end{equation*}
+
+\vspace{4pt}
+\textbf{4. State + Action $\rightarrow$ Payoff:}
+\begin{align*}
+\Pi_i^{\text{hon}} &= p_i^{\text{hon}} \cdot (F_t + M_t) - C_i \\
+\Pi_i^{\text{dev}} &= p_i^{\text{dev}} \cdot (F_t + M_t + G_t) - C_i
+\end{align*}
+
+\vspace{4pt}
+\textbf{5. Payoff $\rightarrow$ Value:}
+\begin{equation*}
+V_i = \sum_{t=0}^{T-1} \gamma^t \Pi_i(S_t, a_i)
+\end{equation*}
+
+\vspace{4pt}
+\textbf{6. Value $\rightarrow$ Action:}
+\begin{equation*}
+a_i = \arg\max_{a \in \{\text{hon}, \text{dev}\}} V_i^a
+\end{equation*}
+
+\section*{9. Data Sources}
+
+\vspace{3pt}
+
+\begin{itemize}
+  \item Fee: fee\_sampler.parquet
+  \item MEV: mev\_sampler.parquet
+  \item Miner shares: miner\_shares.parquet
+  \item Costs: miner\_cost\_curve.parquet
+  \item Network delay: KIT invstat.gpd (blocks 790k--890k)
+\end{itemize}
+
+\end{multicols}
+
+\section*{10. Experimental Results Summary}
+
+\vspace{4pt}
+\textbf{Note:} Results shown below are for $G_t = 0$ (baseline, no deviation gain). 
+The system is stable when $G_t = 0$. Deviation occurs when $G_t$ exceeds the threshold value (see $G_t$ threshold table).
+
+\vspace{4pt}
+\textbf{Results by Block Size and Fee Floor ($G_t = 0$):}
+
+\vspace{4pt}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$B$ (MB) & $\phi$ & Avg ROI & Avg Fork Rate & Stable \\
+\hline
+1 & 0.06 & 176.5 & 0.0012 & Yes \\
+1 & 0.125 & 178.2 & 0.0013 & Yes \\
+1 & 0.25 & 177.8 & 0.0013 & Yes \\
+2 & 0.06 & 348.1 & 0.0012 & Yes \\
+2 & 0.125 & 349.3 & 0.0014 & Yes \\
+2 & 0.25 & 345.0 & 0.0011 & Yes \\
+4 & 0.06 & 686.3 & 0.0015 & Yes \\
+4 & 0.125 & 684.9 & 0.0015 & Yes \\
+4 & 0.25 & 683.8 & 0.0015 & Yes \\
+8 & 0.06 & 1357.4 & 0.0018 & Yes \\
+8 & 0.125 & 1337.3 & 0.0015 & Yes \\
+8 & 0.25 & 1351.7 & 0.0018 & Yes \\
+\hline
+\end{tabular}
+
+\vspace{6pt}
+\textbf{$G_t$ Threshold by Block Size and Fee Floor:}
+
+\vspace{4pt}
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$B$ (MB) & $\phi$ & Ratio & $G_t$ Threshold (sat) \\
+\hline
+1 & 0.06 & 0.001951 & 42,525 \\
+1 & 0.125 & 0.001951 & 42,525 \\
+1 & 0.25 & 0.001951 & 42,525 \\
+2 & 0.06 & 0.001951 & 82,026 \\
+2 & 0.125 & 0.001951 & 82,026 \\
+2 & 0.25 & 0.001951 & 82,026 \\
+4 & 0.06 & 0.001951 & 161,029 \\
+4 & 0.125 & 0.001951 & 161,029 \\
+4 & 0.25 & 0.001951 & 161,029 \\
+8 & 0.06 & 0.001951 & 319,035 \\
+8 & 0.125 & 0.001951 & 319,035 \\
+8 & 0.25 & 0.001951 & 319,035 \\
+\hline
+\end{tabular}
+
+\vspace{4pt}
+\raggedright
+\textbf{Threshold formula:} $G_t > \text{ratio} \times X_t$ where 
+$\text{ratio} = (\rho_{\text{dev}} - \rho_{\text{hon}}) / (1 - \rho_{\text{dev}})$.
+Note: Threshold depends on $B$ and $w$ (withholding delay), not on $\phi$.
+Values shown are averaged over $w \in \{0.5, 1.0, 2.0\}$ s.
+When $G_t$ exceeds the threshold, deviation becomes profitable and miners may deviate from honest behavior.
+
+\end{document}

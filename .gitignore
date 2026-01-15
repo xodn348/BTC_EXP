@@ -1,0 +1,90 @@
+# Python virtual environments
+source/
+88254/
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Data directories (large files, can be regenerated via ETL)
+data/raw/*
+!data/raw/.keep
+!data/raw/network_delay/
+!data/raw/costs/
+data/processed/*
+!data/processed/.keep
+
+# Backup files
+*.backup
+*.csv.backup
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Thesis/Proposal files (private)
+proposal/
+
+# Internal review documents (not for public)
+CODE_REVIEW.md
+
+# PDF papers and reports (large binary files)
+mev/*.pdf
+
+# Keep MEV sample data (required for reproducibility)
+!mev/mev_samples_parameter_based.csv
+docs/report/*.pdf
+docs/diagrams/**/*.pdf
+docs/diagrams/**/*.png
+
+# LaTeX auxiliary files
+*.aux
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.synctex.gz
+docs/report/*.log
+
+# Extracted markdown from PDFs (private)
+*_extracted.md
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Logs (keep network_delay logs, exclude others)
+log/*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
