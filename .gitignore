@@ -19,6 +19,10 @@ data/raw/*
 !data/raw/network_delay/
 !data/raw/costs/
 !data/raw/blocks/
+!data/raw/prices/
+!data/raw/pools/
+!data/raw/audit/
+!data/raw/mev/
 data/processed/*
 !data/processed/.keep
 

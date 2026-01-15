@@ -1,0 +1,444 @@
+2025-12-30 17:39:03,659 - INFO - Starting collection from 790000 to 890000
+2025-12-30 17:39:04,209 - WARNING - Failed to get hash for 790000: 404
+2025-12-30 17:39:04,211 - ERROR - Failed to connect to API or fetch block 790000. Check internet connection or API URL.
+2025-12-30 17:40:57,299 - INFO - Starting collection from 790000 to 890000
+2025-12-30 17:40:58,392 - INFO - Collected 790000: Pool=Unknown, Score=None
+2025-12-30 17:40:59,198 - INFO - Collected 790001: Pool=Unknown, Score=None
+2025-12-30 17:41:00,044 - INFO - Collected 790002: Pool=Unknown, Score=None
+2025-12-30 17:41:00,834 - INFO - Collected 790003: Pool=Unknown, Score=None
+2025-12-30 17:41:01,605 - INFO - Collected 790004: Pool=Unknown, Score=None
+2025-12-30 17:41:02,435 - INFO - Collected 790005: Pool=Unknown, Score=None
+2025-12-30 17:41:03,259 - INFO - Collected 790006: Pool=Unknown, Score=None
+2025-12-30 17:41:04,085 - INFO - Collected 790007: Pool=Unknown, Score=None
+2025-12-30 17:41:04,925 - INFO - Collected 790008: Pool=Unknown, Score=None
+2025-12-30 17:41:05,731 - INFO - Collected 790009: Pool=Unknown, Score=None
+2025-12-30 17:41:06,541 - INFO - Collected 790010: Pool=Unknown, Score=None
+2025-12-30 17:41:07,334 - INFO - Collected 790011: Pool=Unknown, Score=None
+2025-12-30 17:41:08,153 - INFO - Collected 790012: Pool=Unknown, Score=None
+2025-12-30 17:41:08,967 - INFO - Collected 790013: Pool=Unknown, Score=None
+2025-12-30 17:41:09,781 - INFO - Collected 790014: Pool=Unknown, Score=None
+2025-12-30 17:41:10,616 - INFO - Collected 790015: Pool=Unknown, Score=None
+2025-12-30 17:41:11,387 - INFO - Collected 790016: Pool=Unknown, Score=None
+2025-12-30 17:41:12,304 - INFO - Collected 790017: Pool=Unknown, Score=None
+2025-12-30 17:41:13,223 - INFO - Collected 790018: Pool=Unknown, Score=None
+2025-12-30 17:41:14,053 - INFO - Collected 790019: Pool=Unknown, Score=None
+2025-12-30 17:41:14,898 - INFO - Collected 790020: Pool=Unknown, Score=None
+2025-12-30 17:41:15,751 - INFO - Collected 790021: Pool=Unknown, Score=None
+2025-12-30 17:41:16,585 - INFO - Collected 790022: Pool=Unknown, Score=None
+2025-12-30 17:41:17,428 - INFO - Collected 790023: Pool=Unknown, Score=None
+2025-12-30 17:41:18,291 - INFO - Collected 790024: Pool=Unknown, Score=None
+2025-12-30 17:41:19,140 - INFO - Collected 790025: Pool=Unknown, Score=None
+2025-12-30 17:41:20,148 - INFO - Collected 790026: Pool=Unknown, Score=None
+2025-12-30 17:41:21,008 - INFO - Collected 790027: Pool=Unknown, Score=None
+2025-12-30 17:41:21,893 - INFO - Collected 790028: Pool=Unknown, Score=None
+2025-12-30 17:41:22,807 - INFO - Collected 790029: Pool=Unknown, Score=None
+2025-12-30 17:41:23,610 - INFO - Collected 790030: Pool=Unknown, Score=None
+2025-12-30 17:41:24,437 - INFO - Collected 790031: Pool=Unknown, Score=None
+2025-12-30 17:41:25,289 - INFO - Collected 790032: Pool=Unknown, Score=None
+2025-12-30 17:41:26,143 - INFO - Collected 790033: Pool=Unknown, Score=None
+2025-12-30 17:41:26,935 - INFO - Collected 790034: Pool=Unknown, Score=None
+2025-12-30 17:41:27,754 - INFO - Collected 790035: Pool=Unknown, Score=None
+2025-12-30 17:41:28,563 - INFO - Collected 790036: Pool=Unknown, Score=None
+2025-12-30 17:41:29,394 - INFO - Collected 790037: Pool=Unknown, Score=None
+2025-12-30 17:41:30,245 - INFO - Collected 790038: Pool=Unknown, Score=None
+2025-12-30 17:41:31,124 - INFO - Collected 790039: Pool=Unknown, Score=None
+2025-12-30 17:41:32,054 - INFO - Collected 790040: Pool=Unknown, Score=None
+2025-12-30 17:41:32,944 - INFO - Collected 790041: Pool=Unknown, Score=None
+2025-12-30 17:41:33,831 - INFO - Collected 790042: Pool=Unknown, Score=None
+2025-12-30 17:41:34,659 - INFO - Collected 790043: Pool=Unknown, Score=None
+2025-12-30 17:41:35,509 - INFO - Collected 790044: Pool=Unknown, Score=None
+2025-12-30 17:41:36,338 - INFO - Collected 790045: Pool=Unknown, Score=None
+2025-12-30 17:41:37,183 - INFO - Collected 790046: Pool=Unknown, Score=None
+2025-12-30 17:41:38,010 - INFO - Collected 790047: Pool=Unknown, Score=None
+2025-12-30 17:41:38,897 - INFO - Collected 790048: Pool=Unknown, Score=None
+2025-12-30 17:41:39,760 - INFO - Collected 790049: Pool=Unknown, Score=None
+2025-12-30 17:41:41,035 - INFO - Collected 790050: Pool=Unknown, Score=None
+2025-12-30 17:41:41,998 - INFO - Collected 790051: Pool=Unknown, Score=None
+2025-12-30 17:41:42,946 - INFO - Collected 790052: Pool=Unknown, Score=None
+2025-12-30 17:41:43,812 - INFO - Collected 790053: Pool=Unknown, Score=None
+2025-12-30 17:41:44,679 - INFO - Collected 790054: Pool=Unknown, Score=None
+2025-12-30 17:41:45,535 - INFO - Collected 790055: Pool=Unknown, Score=None
+2025-12-30 17:41:46,372 - INFO - Collected 790056: Pool=Unknown, Score=None
+2025-12-30 17:41:47,150 - INFO - Collected 790057: Pool=Unknown, Score=None
+2025-12-30 17:41:47,935 - INFO - Collected 790058: Pool=Unknown, Score=None
+2025-12-30 17:41:48,823 - INFO - Collected 790059: Pool=Unknown, Score=None
+2025-12-30 17:41:49,703 - INFO - Collected 790060: Pool=Unknown, Score=None
+2025-12-30 17:41:50,597 - INFO - Collected 790061: Pool=Unknown, Score=None
+2025-12-30 17:41:51,436 - INFO - Collected 790062: Pool=Unknown, Score=None
+2025-12-30 17:41:52,260 - INFO - Collected 790063: Pool=Unknown, Score=None
+2025-12-30 17:41:53,137 - INFO - Collected 790064: Pool=Unknown, Score=None
+2025-12-30 17:41:53,994 - INFO - Collected 790065: Pool=Unknown, Score=None
+2025-12-30 17:41:54,859 - INFO - Collected 790066: Pool=Unknown, Score=None
+2025-12-30 17:41:55,726 - INFO - Collected 790067: Pool=Unknown, Score=None
+2025-12-30 17:41:56,519 - INFO - Collected 790068: Pool=Unknown, Score=None
+2025-12-30 17:41:57,390 - INFO - Collected 790069: Pool=Unknown, Score=None
+2025-12-30 17:41:58,254 - INFO - Collected 790070: Pool=Unknown, Score=None
+2025-12-30 17:41:59,086 - INFO - Collected 790071: Pool=Unknown, Score=None
+2025-12-30 17:41:59,909 - INFO - Collected 790072: Pool=Unknown, Score=None
+2025-12-30 17:42:00,735 - INFO - Collected 790073: Pool=Unknown, Score=None
+2025-12-30 17:42:01,591 - INFO - Collected 790074: Pool=Unknown, Score=None
+2025-12-30 17:42:02,405 - INFO - Collected 790075: Pool=Unknown, Score=None
+2025-12-30 17:42:03,338 - INFO - Collected 790076: Pool=Unknown, Score=None
+2025-12-30 17:42:04,224 - INFO - Collected 790077: Pool=Unknown, Score=None
+2025-12-30 17:42:05,137 - INFO - Collected 790078: Pool=Unknown, Score=None
+2025-12-30 17:42:06,017 - INFO - Collected 790079: Pool=Unknown, Score=None
+2025-12-30 17:42:06,908 - INFO - Collected 790080: Pool=Unknown, Score=None
+2025-12-30 17:42:07,756 - INFO - Collected 790081: Pool=Unknown, Score=None
+2025-12-30 17:42:08,644 - INFO - Collected 790082: Pool=Unknown, Score=None
+2025-12-30 17:42:09,573 - INFO - Collected 790083: Pool=Unknown, Score=None
+2025-12-30 17:42:10,440 - INFO - Collected 790084: Pool=Unknown, Score=None
+2025-12-30 17:42:11,281 - INFO - Collected 790085: Pool=Unknown, Score=None
+2025-12-30 17:42:12,154 - INFO - Collected 790086: Pool=Unknown, Score=None
+2025-12-30 17:42:13,079 - INFO - Collected 790087: Pool=Unknown, Score=None
+2025-12-30 17:42:13,937 - INFO - Collected 790088: Pool=Unknown, Score=None
+2025-12-30 17:42:14,834 - INFO - Collected 790089: Pool=Unknown, Score=None
+2025-12-30 17:42:15,737 - INFO - Collected 790090: Pool=Unknown, Score=None
+2025-12-30 17:42:16,576 - INFO - Collected 790091: Pool=Unknown, Score=None
+2025-12-30 17:42:17,358 - INFO - Collected 790092: Pool=Unknown, Score=None
+2025-12-30 17:42:18,179 - INFO - Collected 790093: Pool=Unknown, Score=None
+2025-12-30 17:42:19,024 - INFO - Collected 790094: Pool=Unknown, Score=None
+2025-12-30 17:42:19,835 - INFO - Collected 790095: Pool=Unknown, Score=None
+2025-12-30 17:42:20,704 - INFO - Collected 790096: Pool=Unknown, Score=None
+2025-12-30 17:42:21,528 - INFO - Collected 790097: Pool=Unknown, Score=None
+2025-12-30 17:42:22,586 - INFO - Collected 790098: Pool=Unknown, Score=None
+2025-12-30 17:42:23,404 - INFO - Collected 790099: Pool=Unknown, Score=None
+2025-12-30 17:42:23,529 - INFO - Saved progress up to height 790099
+2025-12-30 17:42:24,322 - INFO - Collected 790100: Pool=Unknown, Score=None
+2025-12-30 17:42:25,168 - INFO - Collected 790101: Pool=Unknown, Score=None
+2025-12-30 17:42:26,021 - INFO - Collected 790102: Pool=Unknown, Score=None
+2025-12-30 17:42:26,872 - INFO - Collected 790103: Pool=Unknown, Score=None
+2025-12-30 17:42:27,755 - INFO - Collected 790104: Pool=Unknown, Score=None
+2025-12-30 17:42:28,645 - INFO - Collected 790105: Pool=Unknown, Score=None
+2025-12-30 17:42:29,534 - INFO - Collected 790106: Pool=Unknown, Score=None
+2025-12-30 17:42:30,324 - INFO - Collected 790107: Pool=Unknown, Score=None
+2025-12-30 17:42:31,214 - INFO - Collected 790108: Pool=Unknown, Score=None
+2025-12-30 17:42:32,064 - INFO - Collected 790109: Pool=Unknown, Score=None
+2025-12-30 17:42:32,866 - INFO - Collected 790110: Pool=Unknown, Score=None
+2025-12-30 17:42:33,738 - INFO - Collected 790111: Pool=Unknown, Score=None
+2025-12-30 17:42:34,562 - INFO - Collected 790112: Pool=Unknown, Score=None
+2025-12-30 17:42:35,421 - INFO - Collected 790113: Pool=Unknown, Score=None
+2025-12-30 17:42:36,247 - INFO - Collected 790114: Pool=Unknown, Score=None
+2025-12-30 17:42:37,095 - INFO - Collected 790115: Pool=Unknown, Score=None
+2025-12-30 17:42:37,895 - INFO - Collected 790116: Pool=Unknown, Score=None
+2025-12-30 17:42:38,752 - INFO - Collected 790117: Pool=Unknown, Score=None
+2025-12-30 17:42:39,628 - INFO - Collected 790118: Pool=Unknown, Score=None
+2025-12-30 17:42:40,452 - INFO - Collected 790119: Pool=Unknown, Score=None
+2025-12-30 17:42:41,302 - INFO - Collected 790120: Pool=Unknown, Score=None
+2025-12-30 17:42:42,161 - INFO - Collected 790121: Pool=Unknown, Score=None
+2025-12-30 17:42:42,977 - INFO - Collected 790122: Pool=Unknown, Score=None
+2025-12-30 17:42:43,845 - INFO - Collected 790123: Pool=Unknown, Score=None
+2025-12-30 17:42:44,652 - INFO - Collected 790124: Pool=Unknown, Score=None
+2025-12-30 17:42:45,479 - INFO - Collected 790125: Pool=Unknown, Score=None
+2025-12-30 17:42:46,328 - INFO - Collected 790126: Pool=Unknown, Score=None
+2025-12-30 17:42:47,145 - INFO - Collected 790127: Pool=Unknown, Score=None
+2025-12-30 17:42:47,952 - INFO - Collected 790128: Pool=Unknown, Score=None
+2025-12-30 17:42:48,788 - INFO - Collected 790129: Pool=Unknown, Score=None
+2025-12-30 17:42:49,631 - INFO - Collected 790130: Pool=Unknown, Score=None
+2025-12-30 17:42:50,447 - INFO - Collected 790131: Pool=Unknown, Score=None
+2025-12-30 17:42:51,329 - INFO - Collected 790132: Pool=Unknown, Score=None
+2025-12-30 17:42:52,178 - INFO - Collected 790133: Pool=Unknown, Score=None
+2025-12-30 17:42:53,009 - INFO - Collected 790134: Pool=Unknown, Score=None
+2025-12-30 17:42:53,838 - INFO - Collected 790135: Pool=Unknown, Score=None
+2025-12-30 17:42:54,670 - INFO - Collected 790136: Pool=Unknown, Score=None
+2025-12-30 17:42:55,494 - INFO - Collected 790137: Pool=Unknown, Score=None
+2025-12-30 17:42:56,350 - INFO - Collected 790138: Pool=Unknown, Score=None
+2025-12-30 17:42:57,209 - INFO - Collected 790139: Pool=Unknown, Score=None
+2025-12-30 17:42:58,081 - INFO - Collected 790140: Pool=Unknown, Score=None
+2025-12-30 17:42:58,944 - INFO - Collected 790141: Pool=Unknown, Score=None
+2025-12-30 17:42:59,743 - INFO - Collected 790142: Pool=Unknown, Score=None
+2025-12-30 17:43:00,519 - INFO - Collected 790143: Pool=Unknown, Score=None
+2025-12-30 17:43:01,288 - INFO - Collected 790144: Pool=Unknown, Score=None
+2025-12-30 17:43:02,145 - INFO - Collected 790145: Pool=Unknown, Score=None
+2025-12-30 17:43:02,969 - INFO - Collected 790146: Pool=Unknown, Score=None
+2025-12-30 17:43:03,853 - INFO - Collected 790147: Pool=Unknown, Score=None
+2025-12-30 17:43:04,689 - INFO - Collected 790148: Pool=Unknown, Score=None
+2025-12-30 17:43:05,558 - INFO - Collected 790149: Pool=Unknown, Score=None
+2025-12-30 17:43:06,379 - INFO - Collected 790150: Pool=Unknown, Score=None
+2025-12-30 17:43:07,217 - INFO - Collected 790151: Pool=Unknown, Score=None
+2025-12-30 17:43:08,043 - INFO - Collected 790152: Pool=Unknown, Score=None
+2025-12-30 17:43:08,830 - INFO - Collected 790153: Pool=Unknown, Score=None
+2025-12-30 17:43:09,731 - INFO - Collected 790154: Pool=Unknown, Score=None
+2025-12-30 17:43:10,535 - INFO - Collected 790155: Pool=Unknown, Score=None
+2025-12-30 17:43:11,354 - INFO - Collected 790156: Pool=Unknown, Score=None
+2025-12-30 17:43:12,153 - INFO - Collected 790157: Pool=Unknown, Score=None
+2025-12-30 17:43:12,983 - INFO - Collected 790158: Pool=Unknown, Score=None
+2025-12-30 17:43:13,830 - INFO - Collected 790159: Pool=Unknown, Score=None
+2025-12-30 17:43:14,685 - INFO - Collected 790160: Pool=Unknown, Score=None
+2025-12-30 17:43:15,489 - INFO - Collected 790161: Pool=Unknown, Score=None
+2025-12-30 17:43:16,309 - INFO - Collected 790162: Pool=Unknown, Score=None
+2025-12-30 17:43:17,123 - INFO - Collected 790163: Pool=Unknown, Score=None
+2025-12-30 17:43:17,944 - INFO - Collected 790164: Pool=Unknown, Score=None
+2025-12-30 17:43:18,731 - INFO - Collected 790165: Pool=Unknown, Score=None
+2025-12-30 17:43:19,530 - INFO - Collected 790166: Pool=Unknown, Score=None
+2025-12-30 17:43:20,365 - INFO - Collected 790167: Pool=Unknown, Score=None
+2025-12-30 17:43:21,223 - INFO - Collected 790168: Pool=Unknown, Score=None
+2025-12-30 17:43:22,058 - INFO - Collected 790169: Pool=Unknown, Score=None
+2025-12-30 17:43:22,891 - INFO - Collected 790170: Pool=Unknown, Score=None
+2025-12-30 17:43:23,736 - INFO - Collected 790171: Pool=Unknown, Score=None
+2025-12-30 17:43:24,608 - INFO - Collected 790172: Pool=Unknown, Score=None
+2025-12-30 17:43:25,477 - INFO - Collected 790173: Pool=Unknown, Score=None
+2025-12-30 17:43:26,453 - INFO - Collected 790174: Pool=Unknown, Score=None
+2025-12-30 17:43:27,397 - INFO - Collected 790175: Pool=Unknown, Score=None
+2025-12-30 17:43:28,240 - INFO - Collected 790176: Pool=Unknown, Score=None
+2025-12-30 17:43:29,098 - INFO - Collected 790177: Pool=Unknown, Score=None
+2025-12-30 17:43:29,931 - INFO - Collected 790178: Pool=Unknown, Score=None
+2025-12-30 17:43:30,736 - INFO - Collected 790179: Pool=Unknown, Score=None
+2025-12-30 17:43:31,580 - INFO - Collected 790180: Pool=Unknown, Score=None
+2025-12-30 17:43:36,474 - INFO - Resuming... 0 blocks already collected.
+2025-12-30 17:43:36,474 - INFO - Starting collection from 790000 to 890000
+2025-12-30 17:43:37,900 - INFO - Collected 790000: Pool=AntPool, Score=99.5
+2025-12-30 17:43:38,788 - INFO - Collected 790001: Pool=Foundry USA, Score=98.5
+2025-12-30 17:43:39,642 - INFO - Collected 790002: Pool=Foundry USA, Score=99.24
+2025-12-30 17:43:40,429 - INFO - Collected 790003: Pool=F2Pool, Score=99.52
+2025-12-30 17:43:41,629 - INFO - Collected 790004: Pool=F2Pool, Score=98.53
+2025-12-30 17:43:42,546 - INFO - Collected 790005: Pool=AntPool, Score=99.04
+2025-12-30 17:43:43,552 - INFO - Collected 790006: Pool=Foundry USA, Score=99.82
+2025-12-30 17:43:44,800 - INFO - Collected 790007: Pool=NiceHash, Score=99.06
+2025-12-30 17:43:45,942 - INFO - Collected 790008: Pool=Binance Pool, Score=98.6
+2025-12-30 17:43:47,379 - INFO - Collected 790009: Pool=Binance Pool, Score=99.48
+2025-12-30 17:43:48,341 - INFO - Collected 790010: Pool=Foundry USA, Score=100
+2025-12-30 17:43:49,448 - INFO - Collected 790011: Pool=ViaBTC, Score=98.1
+2025-12-30 17:43:50,611 - INFO - Collected 790012: Pool=Foundry USA, Score=98.25
+2025-12-30 17:43:51,578 - INFO - Collected 790013: Pool=Binance Pool, Score=98.28
+2025-12-30 17:43:52,849 - INFO - Collected 790014: Pool=Foundry USA, Score=98.56
+2025-12-30 17:43:54,162 - INFO - Collected 790015: Pool=Carbon Negative, Score=100
+2025-12-30 17:43:55,003 - INFO - Collected 790016: Pool=Foundry USA, Score=98.46
+2025-12-30 17:43:56,277 - INFO - Collected 790017: Pool=Foundry USA, Score=97.34
+2025-12-30 17:43:57,512 - INFO - Collected 790018: Pool=Braiins Pool, Score=99.24
+2025-12-30 17:43:58,905 - INFO - Collected 790019: Pool=ViaBTC, Score=99.08
+2025-12-30 17:43:59,718 - INFO - Collected 790020: Pool=PEGA Pool, Score=98.73
+2025-12-30 17:44:00,510 - INFO - Collected 790021: Pool=ViaBTC, Score=100
+2025-12-30 17:44:02,806 - INFO - Collected 790022: Pool=BTC.com, Score=100
+2025-12-30 17:44:04,086 - INFO - Collected 790023: Pool=ViaBTC, Score=98.41
+2025-12-30 17:44:04,947 - INFO - Collected 790024: Pool=MARA Pool, Score=100
+2025-12-30 17:44:06,104 - INFO - Collected 790025: Pool=AntPool, Score=98.08
+2025-12-30 17:44:07,047 - INFO - Collected 790026: Pool=Luxor, Score=100
+2025-12-30 17:44:07,875 - INFO - Collected 790027: Pool=ViaBTC, Score=98.19
+2025-12-30 17:44:08,666 - INFO - Collected 790028: Pool=Foundry USA, Score=100
+2025-12-30 17:44:09,461 - INFO - Collected 790029: Pool=MARA Pool, Score=97.76
+2025-12-30 17:44:10,661 - INFO - Collected 790030: Pool=F2Pool, Score=100
+2025-12-30 17:44:11,604 - INFO - Collected 790031: Pool=AntPool, Score=99.07
+2025-12-30 17:44:12,459 - INFO - Collected 790032: Pool=Binance Pool, Score=98.78
+2025-12-30 17:44:13,336 - INFO - Collected 790033: Pool=ViaBTC, Score=99.11
+2025-12-30 17:44:14,387 - INFO - Collected 790034: Pool=F2Pool, Score=98.46
+2025-12-30 17:44:15,557 - INFO - Collected 790035: Pool=AntPool, Score=100
+2025-12-30 17:44:16,572 - INFO - Collected 790036: Pool=ViaBTC, Score=98.47
+2025-12-30 17:44:17,995 - INFO - Collected 790037: Pool=AntPool, Score=98.19
+2025-12-30 17:44:19,114 - INFO - Collected 790038: Pool=AntPool, Score=100
+2025-12-30 17:44:20,160 - INFO - Collected 790039: Pool=Poolin, Score=99.09
+2025-12-30 17:44:21,073 - INFO - Collected 790040: Pool=F2Pool, Score=99.39
+2025-12-30 17:44:21,932 - INFO - Collected 790041: Pool=Foundry USA, Score=98.56
+2025-12-30 17:44:23,421 - INFO - Collected 790042: Pool=Binance Pool, Score=99.97
+2025-12-30 17:44:24,673 - INFO - Collected 790043: Pool=ViaBTC, Score=98.09
+2025-12-30 17:44:25,613 - INFO - Collected 790044: Pool=MARA Pool, Score=98
+2025-12-30 17:44:26,803 - INFO - Collected 790045: Pool=AntPool, Score=100
+2025-12-30 17:44:27,630 - INFO - Collected 790046: Pool=Binance Pool, Score=99.27
+2025-12-30 17:44:29,044 - INFO - Collected 790047: Pool=Foundry USA, Score=100
+2025-12-30 17:44:29,893 - INFO - Collected 790048: Pool=AntPool, Score=100
+2025-12-30 17:44:30,868 - INFO - Collected 790049: Pool=AntPool, Score=100
+2025-12-30 17:44:31,720 - INFO - Collected 790050: Pool=AntPool, Score=99.97
+2025-12-30 17:44:33,081 - INFO - Collected 790051: Pool=Foundry USA, Score=98.03
+2025-12-30 17:44:34,101 - INFO - Collected 790052: Pool=Binance Pool, Score=97.72
+2025-12-30 17:44:35,047 - INFO - Collected 790053: Pool=Foundry USA, Score=100
+2025-12-30 17:44:36,498 - INFO - Collected 790054: Pool=AntPool, Score=97.34
+2025-12-30 17:44:37,488 - INFO - Collected 790055: Pool=F2Pool, Score=99.87
+2025-12-30 17:44:38,311 - INFO - Collected 790056: Pool=AntPool, Score=100
+2025-12-30 17:44:39,119 - INFO - Collected 790057: Pool=AntPool, Score=100
+2025-12-30 17:44:39,948 - INFO - Collected 790058: Pool=ViaBTC, Score=98.55
+2025-12-30 17:44:41,119 - INFO - Collected 790059: Pool=AntPool, Score=98.73
+2025-12-30 17:44:42,076 - INFO - Collected 790060: Pool=Foundry USA, Score=98.39
+2025-12-30 17:44:43,101 - INFO - Collected 790061: Pool=Foundry USA, Score=98.84
+2025-12-30 17:44:43,968 - INFO - Collected 790062: Pool=Binance Pool, Score=100
+2025-12-30 17:44:45,268 - INFO - Collected 790063: Pool=Binance Pool, Score=100
+2025-12-30 17:44:46,196 - INFO - Collected 790064: Pool=ViaBTC, Score=100
+2025-12-30 17:44:47,278 - INFO - Collected 790065: Pool=MARA Pool, Score=97.85
+2025-12-30 17:44:48,154 - INFO - Collected 790066: Pool=Binance Pool, Score=97.65
+2025-12-30 17:44:49,031 - INFO - Collected 790067: Pool=Foundry USA, Score=99.84
+2025-12-30 17:44:49,847 - INFO - Collected 790068: Pool=Foundry USA, Score=99.5
+2025-12-30 17:44:51,864 - INFO - Collected 790069: Pool=BTC.com, Score=99.66
+2025-12-30 17:44:52,720 - INFO - Collected 790070: Pool=Foundry USA, Score=98.56
+2025-12-30 17:44:53,530 - INFO - Collected 790071: Pool=F2Pool, Score=98.4
+2025-12-30 17:44:54,347 - INFO - Collected 790072: Pool=Binance Pool, Score=97.86
+2025-12-30 17:44:55,251 - INFO - Collected 790073: Pool=F2Pool, Score=97.88
+2025-12-30 17:44:56,101 - INFO - Collected 790074: Pool=F2Pool, Score=98.32
+2025-12-30 17:44:56,993 - INFO - Collected 790075: Pool=ViaBTC, Score=98.77
+2025-12-30 17:44:57,835 - INFO - Collected 790076: Pool=Binance Pool, Score=98.29
+2025-12-30 17:44:58,669 - INFO - Collected 790077: Pool=AntPool, Score=97.53
+2025-12-30 17:44:59,557 - INFO - Collected 790078: Pool=BTC.com, Score=98.72
+2025-12-30 17:45:00,414 - INFO - Collected 790079: Pool=ViaBTC, Score=99.08
+2025-12-30 17:45:01,299 - INFO - Collected 790080: Pool=AntPool, Score=99.93
+2025-12-30 17:45:02,160 - INFO - Collected 790081: Pool=AntPool, Score=99.88
+2025-12-30 17:45:03,042 - INFO - Collected 790082: Pool=F2Pool, Score=99.72
+2025-12-30 17:45:03,893 - INFO - Collected 790083: Pool=AntPool, Score=99.76
+2025-12-30 17:45:04,805 - INFO - Collected 790084: Pool=Foundry USA, Score=99.73
+2025-12-30 17:45:05,672 - INFO - Collected 790085: Pool=AntPool, Score=99.58
+2025-12-30 17:45:06,460 - INFO - Collected 790086: Pool=AntPool, Score=99.38
+2025-12-30 17:45:07,293 - INFO - Collected 790087: Pool=Binance Pool, Score=98.88
+2025-12-30 17:45:08,115 - INFO - Collected 790088: Pool=AntPool, Score=98.84
+2025-12-30 17:45:08,923 - INFO - Collected 790089: Pool=PEGA Pool, Score=98.95
+2025-12-30 17:45:09,789 - INFO - Collected 790090: Pool=Foundry USA, Score=98.4
+2025-12-30 17:45:10,629 - INFO - Collected 790091: Pool=Foundry USA, Score=98.49
+2025-12-30 17:45:11,700 - INFO - Collected 790092: Pool=Foundry USA, Score=98.38
+2025-12-30 17:45:12,521 - INFO - Collected 790093: Pool=Foundry USA, Score=98.51
+2025-12-30 17:45:13,355 - INFO - Collected 790094: Pool=Foundry USA, Score=98.8
+2025-12-30 17:45:14,203 - INFO - Collected 790095: Pool=F2Pool, Score=98.99
+2025-12-30 17:45:14,985 - INFO - Collected 790096: Pool=ViaBTC, Score=98.41
+2025-12-30 17:45:15,849 - INFO - Collected 790097: Pool=Foundry USA, Score=99.17
+2025-12-30 17:45:16,674 - INFO - Collected 790098: Pool=AntPool, Score=98.59
+2025-12-30 17:45:17,547 - INFO - Collected 790099: Pool=Foundry USA, Score=98.79
+2025-12-30 17:45:17,667 - INFO - Saved progress up to height 790099
+2025-12-30 17:45:18,417 - INFO - Collected 790100: Pool=Binance Pool, Score=97.62
+2025-12-30 17:45:19,282 - INFO - Collected 790101: Pool=Binance Pool, Score=97.78
+2025-12-30 17:45:20,159 - INFO - Collected 790102: Pool=F2Pool, Score=98.64
+2025-12-30 17:45:21,215 - INFO - Collected 790103: Pool=AntPool, Score=98.41
+2025-12-30 17:45:22,108 - INFO - Collected 790104: Pool=Foundry USA, Score=99.93
+2025-12-30 17:45:22,999 - INFO - Collected 790105: Pool=F2Pool, Score=98.02
+2025-12-30 17:45:23,819 - INFO - Collected 790106: Pool=AntPool, Score=97.47
+2025-12-30 17:45:24,662 - INFO - Collected 790107: Pool=Foundry USA, Score=97.7
+2025-12-30 17:45:25,543 - INFO - Collected 790108: Pool=Foundry USA, Score=97.76
+2025-12-30 17:45:26,452 - INFO - Collected 790109: Pool=Foundry USA, Score=97.9
+2025-12-30 17:45:27,284 - INFO - Collected 790110: Pool=Foundry USA, Score=97.75
+2025-12-30 17:45:28,553 - INFO - Collected 790111: Pool=Binance Pool, Score=97.92
+2025-12-30 17:45:29,791 - INFO - Collected 790112: Pool=Foundry USA, Score=97.37
+2025-12-30 17:45:30,656 - INFO - Collected 790113: Pool=Binance Pool, Score=97.86
+2025-12-30 17:45:32,013 - INFO - Collected 790114: Pool=BTC.com, Score=96.94
+2025-12-30 17:45:33,006 - INFO - Collected 790115: Pool=F2Pool, Score=99.89
+2025-12-30 17:45:33,813 - INFO - Collected 790116: Pool=Foundry USA, Score=98.65
+2025-12-30 17:45:34,656 - INFO - Collected 790117: Pool=Foundry USA, Score=98.76
+2025-12-30 17:45:35,476 - INFO - Collected 790118: Pool=F2Pool, Score=98.39
+2025-12-30 17:45:36,522 - INFO - Collected 790119: Pool=F2Pool, Score=98.35
+2025-12-30 17:45:37,580 - INFO - Collected 790120: Pool=Foundry USA, Score=100
+2025-12-30 17:45:38,433 - INFO - Collected 790121: Pool=Foundry USA, Score=98.58
+2025-12-30 17:45:39,635 - INFO - Collected 790122: Pool=AntPool, Score=99.04
+2025-12-30 17:45:40,681 - INFO - Collected 790123: Pool=ViaBTC, Score=98.02
+2025-12-30 17:45:41,594 - INFO - Collected 790124: Pool=Foundry USA, Score=99.06
+2025-12-30 17:45:42,855 - INFO - Collected 790125: Pool=AntPool, Score=98.8
+2025-12-30 17:45:44,013 - INFO - Collected 790126: Pool=Foundry USA, Score=98.81
+2025-12-30 17:45:44,827 - INFO - Collected 790127: Pool=Foundry USA, Score=98.85
+2025-12-30 17:45:45,634 - INFO - Collected 790128: Pool=AntPool, Score=98.71
+2025-12-30 17:45:46,436 - INFO - Collected 790129: Pool=ULTIMUSPOOL, Score=98.68
+2025-12-30 17:45:47,462 - INFO - Collected 790130: Pool=AntPool, Score=99.87
+2025-12-30 17:45:48,438 - INFO - Collected 790131: Pool=EMCDPool, Score=99.88
+2025-12-30 17:45:49,287 - INFO - Collected 790132: Pool=AntPool, Score=98.46
+2025-12-30 17:45:50,487 - INFO - Collected 790133: Pool=Foundry USA, Score=98.69
+2025-12-30 17:45:51,409 - INFO - Collected 790134: Pool=Foundry USA, Score=98.66
+2025-12-30 17:45:52,472 - INFO - Collected 790135: Pool=AntPool, Score=99.66
+2025-12-30 17:45:53,665 - INFO - Collected 790136: Pool=Foundry USA, Score=99.54
+2025-12-30 17:45:54,869 - INFO - Collected 790137: Pool=Foundry USA, Score=98.68
+2025-12-30 17:45:55,874 - INFO - Collected 790138: Pool=AntPool, Score=98.75
+2025-12-30 17:45:56,775 - INFO - Collected 790139: Pool=F2Pool, Score=99.97
+2025-12-30 17:45:57,986 - INFO - Collected 790140: Pool=Foundry USA, Score=98.16
+2025-12-30 17:45:58,877 - INFO - Collected 790141: Pool=F2Pool, Score=99.78
+2025-12-30 17:45:59,689 - INFO - Collected 790142: Pool=Binance Pool, Score=99.65
+2025-12-30 17:46:00,617 - INFO - Collected 790143: Pool=ViaBTC, Score=99.81
+2025-12-30 17:46:01,568 - INFO - Collected 790144: Pool=AntPool, Score=95.14
+2025-12-30 17:46:02,452 - INFO - Collected 790145: Pool=F2Pool, Score=98.74
+2025-12-30 17:46:03,461 - INFO - Collected 790146: Pool=Foundry USA, Score=99.88
+2025-12-30 17:46:04,430 - INFO - Collected 790147: Pool=ULTIMUSPOOL, Score=98.86
+2025-12-30 17:46:05,493 - INFO - Collected 790148: Pool=ViaBTC, Score=99.1
+2025-12-30 17:46:06,560 - INFO - Collected 790149: Pool=Foundry USA, Score=99.36
+2025-12-30 17:46:07,756 - INFO - Collected 790150: Pool=F2Pool, Score=99.87
+2025-12-30 17:46:08,590 - INFO - Collected 790151: Pool=Foundry USA, Score=99.27
+2025-12-30 17:46:09,445 - INFO - Collected 790152: Pool=Foundry USA, Score=98.93
+2025-12-30 17:46:10,352 - INFO - Collected 790153: Pool=Foundry USA, Score=99.33
+2025-12-30 17:46:11,596 - INFO - Collected 790154: Pool=AntPool, Score=100
+2025-12-30 17:46:12,460 - INFO - Collected 790155: Pool=Foundry USA, Score=99.82
+2025-12-30 17:46:13,617 - INFO - Collected 790156: Pool=F2Pool, Score=99.49
+2025-12-30 17:46:14,472 - INFO - Collected 790157: Pool=Binance Pool, Score=99.2
+2025-12-30 17:46:15,467 - INFO - Collected 790158: Pool=AntPool, Score=99.13
+2025-12-30 17:46:16,514 - INFO - Collected 790159: Pool=Carbon Negative, Score=99.45
+2025-12-30 17:46:17,385 - INFO - Collected 790160: Pool=ViaBTC, Score=98.69
+2025-12-30 17:46:18,261 - INFO - Collected 790161: Pool=NiceHash, Score=99.77
+2025-12-30 17:46:19,105 - INFO - Collected 790162: Pool=Foundry USA, Score=99.9
+2025-12-30 17:46:20,235 - INFO - Collected 790163: Pool=ViaBTC, Score=98.99
+2025-12-30 17:46:21,511 - INFO - Collected 790164: Pool=AntPool, Score=100
+2025-12-30 17:46:22,618 - INFO - Collected 790165: Pool=AntPool, Score=98.96
+2025-12-30 17:46:24,200 - INFO - Collected 790166: Pool=ViaBTC, Score=100
+2025-12-30 17:46:25,550 - INFO - Collected 790167: Pool=Foundry USA, Score=100
+2025-12-30 17:46:27,081 - INFO - Collected 790168: Pool=MARA Pool, Score=98.98
+2025-12-30 17:46:27,902 - INFO - Collected 790169: Pool=Binance Pool, Score=99.46
+2025-12-30 17:46:29,532 - INFO - Collected 790170: Pool=AntPool, Score=100
+2025-12-30 17:46:30,526 - INFO - Collected 790171: Pool=Foundry USA, Score=98.16
+2025-12-30 17:46:31,657 - INFO - Collected 790172: Pool=Luxor, Score=99.93
+2025-12-30 17:46:32,548 - INFO - Collected 790173: Pool=F2Pool, Score=98.89
+2025-12-30 17:46:33,792 - INFO - Collected 790174: Pool=Binance Pool, Score=97.83
+2025-12-30 17:46:34,645 - INFO - Collected 790175: Pool=AntPool, Score=98.09
+2025-12-30 17:46:35,484 - INFO - Collected 790176: Pool=Poolin, Score=98.36
+2025-12-30 17:46:36,372 - INFO - Collected 790177: Pool=Foundry USA, Score=97.91
+2025-12-30 17:46:37,274 - INFO - Collected 790178: Pool=ViaBTC, Score=100
+2025-12-30 17:46:38,071 - INFO - Collected 790179: Pool=AntPool, Score=99.94
+2025-12-30 17:46:38,846 - INFO - Collected 790180: Pool=ViaBTC, Score=99.52
+2025-12-30 17:46:39,630 - INFO - Collected 790181: Pool=F2Pool, Score=99.16
+2025-12-30 17:46:40,743 - INFO - Collected 790182: Pool=F2Pool, Score=98.08
+2025-12-30 17:46:41,894 - INFO - Collected 790183: Pool=AntPool, Score=100
+2025-12-30 17:46:42,697 - INFO - Collected 790184: Pool=ViaBTC, Score=99.94
+2025-12-30 17:46:43,874 - INFO - Collected 790185: Pool=Foundry USA, Score=99.94
+2025-12-30 17:46:44,688 - INFO - Collected 790186: Pool=ViaBTC, Score=99.95
+2025-12-30 17:46:45,546 - INFO - Collected 790187: Pool=EMCDPool, Score=98.78
+2025-12-30 17:46:46,604 - INFO - Collected 790188: Pool=KuCoinPool, Score=99.59
+2025-12-30 17:46:47,972 - INFO - Collected 790189: Pool=Foundry USA, Score=98.68
+2025-12-30 17:46:49,184 - INFO - Collected 790190: Pool=AntPool, Score=98.24
+2025-12-30 17:46:49,993 - INFO - Collected 790191: Pool=ViaBTC, Score=97.95
+2025-12-30 17:46:51,063 - INFO - Collected 790192: Pool=Foundry USA, Score=99.24
+2025-12-30 17:46:52,096 - INFO - Collected 790193: Pool=Foundry USA, Score=99.94
+2025-12-30 17:46:52,967 - INFO - Collected 790194: Pool=Foundry USA, Score=100
+2025-12-30 17:46:54,092 - INFO - Collected 790195: Pool=F2Pool, Score=99.71
+2025-12-30 17:46:55,368 - INFO - Collected 790196: Pool=Binance Pool, Score=99.81
+2025-12-30 17:46:56,419 - INFO - Collected 790197: Pool=Braiins Pool, Score=100
+2025-12-30 17:46:57,254 - INFO - Collected 790198: Pool=AntPool, Score=98.28
+2025-12-30 17:46:58,522 - INFO - Collected 790199: Pool=ViaBTC, Score=99.94
+2025-12-30 17:46:58,633 - INFO - Saved progress up to height 790199
+2025-12-30 17:46:59,345 - INFO - Collected 790200: Pool=Foundry USA, Score=99.89
+2025-12-30 17:47:00,764 - INFO - Collected 790201: Pool=Binance Pool, Score=99.83
+2025-12-30 17:47:01,594 - INFO - Collected 790202: Pool=Foundry USA, Score=99.85
+2025-12-30 17:47:02,546 - INFO - Collected 790203: Pool=Foundry USA, Score=99.74
+2025-12-30 17:47:26,402 - INFO - Resuming... 200 blocks already collected.
+2025-12-30 17:47:26,403 - INFO - Starting collection from 790000 to 890000
+2025-12-30 17:50:19,422 - INFO - Resuming... 500 blocks already collected.
+2025-12-30 17:50:19,423 - INFO - Starting collection from 790000 to 890000
+2025-12-30 17:50:45,391 - WARNING - Failed to get hash for 790840: 429
+2025-12-30 17:50:45,507 - WARNING - Failed to get hash for 790841: 429
+2025-12-30 17:50:55,513 - ERROR - Error fetching hash for 790842: HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)
+2025-12-30 17:50:55,513 - ERROR - Error fetching hash for 790843: HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)
+2025-12-30 17:50:55,775 - ERROR - Error fetching hash for 790844: HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)
+2025-12-30 17:50:55,775 - ERROR - Error fetching hash for 790845: HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)
+2025-12-30 17:53:10,264 - INFO - Force restart enabled. Removing existing data file to start fresh.
+2025-12-30 17:53:10,267 - INFO - Starting collection from 790000 to 890000
+2025-12-30 17:54:10,542 - WARNING - Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/block-height/790366
+2025-12-30 17:54:22,552 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/v1/block/00000000000000000000b23d4d96158eb07f5fb693a99084ff2011dc639657b8
+2025-12-30 18:19:44,472 - INFO - Resuming... 5699 blocks already collected.
+2025-12-30 18:19:44,473 - INFO - Starting collection from 790000 to 890000
+2025-12-30 18:32:57,425 - WARNING - Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/v1/block/000000000000000000017774c5293a3f54079b76e989e142bd2328b3233e49c7
+2025-12-30 18:33:05,072 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/v1/block/00000000000000000002ac5f4c13676ba6c402df277e906b657a0aec599ee0f4
+2025-12-30 20:04:57,727 - WARNING - Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/block-height/820330
+2025-12-30 20:05:05,735 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/v1/block/000000000000000000012077d8e2f04fd38ded639a28e18a6445f921d43c21ab
+2025-12-30 22:16:40,735 - WARNING - Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/block-height/863006
+2025-12-30 22:16:44,738 - WARNING - Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/block-height/863005
+2025-12-30 22:18:32,759 - WARNING - Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/v1/block/000000000000000000020c3c20c30b9e12eb844054fd1e1b935f1cd57f065ebc
+2025-12-30 22:18:40,614 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/v1/block/000000000000000000025db5789f98bcdd7e3a1d54fde11d8964cde9e610ed21
+2025-12-30 22:18:50,897 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/v1/block/000000000000000000020c3c20c30b9e12eb844054fd1e1b935f1cd57f065ebc
+2025-12-30 22:51:16,775 - WARNING - Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/block-height/874244
+2025-12-30 23:06:26,760 - WARNING - Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/v1/block/000000000000000000012c069c3f8f23125eb3e52aee2d46bc45c4ce9bae7dfe
+2025-12-30 23:35:47,676 - WARNING - Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='mempool.space', port=443): Read timed out. (read timeout=10)")': /api/block-height/888551
+2025-12-30 23:40:03,611 - INFO - Collection complete.
+2025-12-30 23:40:04,050 - INFO - Starting analysis...
+2025-12-31 10:14:24,527 - INFO - Resuming... 99989 blocks already collected.
+2025-12-31 10:14:24,530 - INFO - Starting collection from 790000 to 890000
+2025-12-31 10:14:26,905 - INFO - Collection complete.
+2025-12-31 10:14:26,906 - INFO - Starting analysis...
+2025-12-31 10:16:22,672 - INFO - Resuming... 99989 blocks already collected.
+2025-12-31 10:16:22,673 - INFO - Starting collection from 790000 to 890000
+2025-12-31 10:16:25,128 - INFO - Collection complete.
+2025-12-31 10:16:25,129 - INFO - Starting analysis and cleanup...
+2025-12-31 10:16:25,346 - INFO - Cleaned data saved. Removed 25 duplicates. Total rows: 100001
+2025-12-31 10:21:22,043 - INFO - Resuming... 99989 blocks already collected.
+2025-12-31 10:21:22,045 - INFO - Starting collection from 790000 to 890000
+2025-12-31 10:21:27,479 - INFO - Collection complete.
+2025-12-31 10:21:27,482 - INFO - Starting analysis and cleanup...
+2025-12-31 10:21:27,711 - INFO - Cleaned data saved. Removed 12 duplicates. Total rows: 100001
+2025-12-31 10:21:27,793 - INFO - Starting merge and visualization...
+2025-12-31 10:21:27,833 - INFO - Found 2 block data files. Merging...
+2025-12-31 10:21:28,740 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-12-31 10:21:28,839 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-12-31 10:21:29,654 - INFO - Saved monthly distribution plot to /Users/jnnj92/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/4. Thesis/0.exp/btc_exp/docs/diagrams/monthly_analysis/audit_score_monthly_distribution.pdf
+2025-12-31 10:21:30,725 - INFO - Saved merged dataset to /Users/jnnj92/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/4. Thesis/0.exp/btc_exp/docs/diagrams/monthly_analysis/blocks_with_audit_info.csv
