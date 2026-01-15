@@ -17,6 +17,7 @@ pip install -r requirements.txt
 python etl/fetch_blocks.py --start 790000 --end 890000
 python etl/fetch_price.py --source yfinance
 python etl/fetch_pool_audit.py
+python etl/fetch_mev_from_blocks.py
 
 # 3. Build simulation datasets
 python etl/build_dataset.py
@@ -30,6 +31,8 @@ python sim/plot_policy.py
 python sim/plot_threshold.py
 ```
 
+> ⚠️ **Note**: All commands must be run from the project root directory (`BTC_EXP/`).
+
 ### Data Pipeline
 
 ```
@@ -39,10 +42,10 @@ python sim/plot_threshold.py
 │  fetch_blocks.py      → data/raw/blocks/*.csv      (Blockchain.com) │
 │  fetch_price.py       → data/raw/prices/*.csv      (Yahoo Finance)  │
 │  fetch_pool_audit.py  → data/raw/audit/*.csv       (Mempool.space)  │
-│                                                                     │
-│  [Optional]                                                         │
-│  fetch_costs.py       → data/raw/costs/*.csv       (CBECI)          │
 │  fetch_mev_from_blocks.py → data/raw/mev/*.csv     (Estimated)      │
+│                                                                     │
+│  [Optional - data already included]                                 │
+│  fetch_costs.py       → data/raw/costs/*.csv       (CBECI)          │
 └─────────────────────────────────────────────────────────────────────┘
                                     ↓
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -85,6 +88,7 @@ These files are included in the repository:
 | Block data | Blockchain.com | `fetch_blocks.py` | ~6-12 hours |
 | Price data | Yahoo Finance | `fetch_price.py` | ~1 min |
 | Pool & Audit | Mempool.space | `fetch_pool_audit.py` | ~2-4 hours |
+| MEV estimates | Local calculation | `fetch_mev_from_blocks.py` | ~1 min |
 
 ## Project Structure
 
@@ -94,8 +98,8 @@ BTC_EXP/
 │   ├── fetch_blocks.py       # Block data (required)
 │   ├── fetch_price.py        # Price data (required)
 │   ├── fetch_pool_audit.py   # Pool info & audit (required)
+│   ├── fetch_mev_from_blocks.py  # MEV estimation (required)
 │   ├── fetch_costs.py        # Mining costs (optional, data included)
-│   ├── fetch_mev_from_blocks.py  # MEV estimation (optional)
 │   ├── build_dataset.py      # Build consolidated dataset
 │   └── build_pool_cost.py    # Build pool cost dataset
 ├── sim/                      # Simulation
