@@ -43,8 +43,6 @@ python sim/plot_threshold.py
 │  fetch_price.py       → data/raw/prices/*.csv      (Yahoo Finance)  │
 │  fetch_pool_audit.py  → data/raw/audit/*.csv       (Mempool.space)  │
 │  fetch_mev_from_blocks.py → data/raw/mev/*.csv     (Estimated)      │
-│                                                                     │
-│  [Optional - data already included]                                 │
 │  fetch_costs.py       → data/raw/costs/*.csv       (CBECI)          │
 └─────────────────────────────────────────────────────────────────────┘
                                     ↓
