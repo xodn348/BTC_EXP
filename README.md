@@ -7,20 +7,24 @@ Bitcoin miner behavior simulation for post-reward era fee policy analysis.
 > **⚠️ All commands must be run from the project root directory (`btc_exp/`).**
 
 ```bash
-# Clone and setup
+# 1. Clone and setup
 git clone https://github.com/xodn348/BTC_EXP.git
 cd BTC_EXP
 python -m venv venv && source venv/bin/activate && pip install -r requirements.txt
 
-# Data collection (~100,000 blocks, takes several hours)
+# 2. Data collection (takes several hours for 100K blocks)
 python etl/fetch_blocks.py --start 790000 --end 890000
 python etl/fetch_price.py --source yfinance
+python etl/fetch_mempool_audit.py   # Pool info & audit scores
 
-# Build dataset & run simulation
+# 3. Build datasets
 python etl/create_consolidated_dataset.py
+python analysis/01_calc_pool_cost.py
+
+# 4. Run simulation
 python sim/simulate.py --config sim/config_default.yaml
 
-# Visualize results
+# 5. Visualize results
 python sim/plot_policy.py
 python sim/plot_threshold.py
 ```
@@ -46,9 +50,9 @@ Block heights **790,000 → 890,000** (±50,000 blocks around April 2024 halving
 |------|--------|--------|
 | Block data | Blockchain.com API | `etl/fetch_blocks.py` |
 | Price data | Yahoo Finance | `etl/fetch_price.py` |
-| Hashrate/Energy | Blockchain.com | `etl/fetch_hashrate_energy.py` |
-| Mining costs | CBECI | `etl/fetch_costs.py` |
-| MEV estimates | Parameter-based | `mev/mev_samples_parameter_based.csv` |
+| Pool info & Audit | Mempool.space API | `etl/fetch_mempool_audit.py` |
+| Mining costs | CBECI | `data/raw/costs/` (included) |
+| MEV estimates | Parameter-based | `mev/mev_samples_parameter_based.csv` (included) |
 
 ## References
 
