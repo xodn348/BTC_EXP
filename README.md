@@ -8,8 +8,8 @@ Bitcoin miner behavior simulation for post-reward era fee policy analysis.
 
 ```bash
 # Clone and setup
-git clone https://github.com/xodn348/thesis.git
-cd thesis/0.exp/btc_exp
+git clone https://github.com/xodn348/BTC_EXP.git
+cd BTC_EXP
 python -m venv venv && source venv/bin/activate && pip install -r requirements.txt
 
 # Data collection (~100,000 blocks, takes several hours)
