@@ -143,6 +143,21 @@ def main():
         merged['pool_name'] = None
         merged['match_rate'] = None
     
+    # 5. Miner ID Mapping (pool_name -> miner_id)
+    miner_id_file = get_latest_file(RAW_DIR / "pools", "miner_id_mapping_*.csv")
+    if miner_id_file and 'pool_name' in merged.columns:
+        logging.info(f"Loading miner ID mapping: {miner_id_file.name}")
+        miner_mapping = pd.read_csv(miner_id_file)
+        # Create mapping dict
+        pool_to_miner = dict(zip(miner_mapping['pool_name'], miner_mapping['miner_id']))
+        # Map pool_name to miner_id
+        merged['miner_id'] = merged['pool_name'].map(pool_to_miner)
+        # Unknown pools get miner_id = 2 (Unknown)
+        merged['miner_id'] = merged['miner_id'].fillna(2).astype(int)
+    else:
+        logging.warning("Miner ID mapping not found. Setting miner_id to -1")
+        merged['miner_id'] = -1
+    
     # --- Calculate Derived Variables ---
     
     # 1. Block Subsidy (with halving applied)
