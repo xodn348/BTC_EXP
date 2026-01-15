@@ -144,19 +144,19 @@ def main():
         merged['match_rate'] = None
     
     # 5. Miner ID Mapping (pool_name -> miner_id)
-    miner_id_file = get_latest_file(RAW_DIR / "pools", "miner_id_mapping_*.csv")
-    if miner_id_file and 'pool_name' in merged.columns:
-        logging.info(f"Loading miner ID mapping: {miner_id_file.name}")
-        miner_mapping = pd.read_csv(miner_id_file)
-        # Create mapping dict
-        pool_to_miner = dict(zip(miner_mapping['pool_name'], miner_mapping['miner_id']))
-        # Map pool_name to miner_id
+    # Use consistent hardcoded mapping (same as build_pool_cost.py)
+    pool_to_miner = {
+        "Foundry USA": 0, "AntPool": 1, "Unknown": 2,
+        "ViaBTC": 3, "F2Pool": 4, "Binance Pool": 5,
+        "Mara Pool": 6, "SBI Crypto": 7, "Braiins Pool": 8,
+        "BTC.com": 9, "Poolin": 10, "BTC M4": 11,
+        "Kucoin": 12, "KuCoin Pool": 12
+    }
+    if 'pool_name' in merged.columns:
         merged['miner_id'] = merged['pool_name'].map(pool_to_miner)
-        # Unknown pools get miner_id = 2 (Unknown)
-        merged['miner_id'] = merged['miner_id'].fillna(2).astype(int)
+        # Keep NaN for unmapped pools (they won't be used in simulation)
     else:
-        logging.warning("Miner ID mapping not found. Setting miner_id to -1")
-        merged['miner_id'] = -1
+        merged['miner_id'] = None
     
     # --- Calculate Derived Variables ---
     
