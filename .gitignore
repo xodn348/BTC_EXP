@@ -25,6 +25,8 @@ data/raw/*
 !data/raw/mev/
 data/processed/*
 !data/processed/.keep
+!data/processed/consolidated_block_data.csv
+!data/processed/pool_daily_cost.csv
 
 # Backup files
 *.backup
