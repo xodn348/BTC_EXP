@@ -18,6 +18,7 @@ data/raw/*
 !data/raw/.keep
 !data/raw/network_delay/
 !data/raw/costs/
+!data/raw/blocks/
 data/processed/*
 !data/processed/.keep
 
