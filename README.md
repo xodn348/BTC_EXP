@@ -2,20 +2,23 @@
 
 Bitcoin miner behavior simulation for post-reward era fee policy analysis.
 
-## Quickstart
+## Reproducibility
+
+### Quick Start (Full Pipeline)
 
 ```bash
 # 1. Clone and setup
 git clone https://github.com/xodn348/BTC_EXP.git
 cd BTC_EXP
-python -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
 
-# 2. Data collection (takes several hours for 100K blocks)
+# 2. Collect data from APIs (takes several hours)
 python etl/fetch_blocks.py --start 790000 --end 890000
 python etl/fetch_price.py --source yfinance
 python etl/fetch_pool_audit.py
 
-# 3. Build datasets
+# 3. Build simulation datasets
 python etl/build_dataset.py
 python etl/build_pool_cost.py
 
@@ -27,28 +30,84 @@ python sim/plot_policy.py
 python sim/plot_threshold.py
 ```
 
+### Data Pipeline
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  STEP 1: Data Collection (ETL)                                      │
+├─────────────────────────────────────────────────────────────────────┤
+│  fetch_blocks.py      → data/raw/blocks/*.csv      (Blockchain.com) │
+│  fetch_price.py       → data/raw/prices/*.csv      (Yahoo Finance)  │
+│  fetch_pool_audit.py  → data/raw/audit/*.csv       (Mempool.space)  │
+│                                                                     │
+│  [Optional]                                                         │
+│  fetch_costs.py       → data/raw/costs/*.csv       (CBECI)          │
+│  fetch_mev_from_blocks.py → data/raw/mev/*.csv     (Estimated)      │
+└─────────────────────────────────────────────────────────────────────┘
+                                    ↓
+┌─────────────────────────────────────────────────────────────────────┐
+│  STEP 2: Build Datasets                                             │
+├─────────────────────────────────────────────────────────────────────┤
+│  build_dataset.py     → data/processed/consolidated_block_data.csv  │
+│  build_pool_cost.py   → data/processed/pool_daily_cost.csv          │
+└─────────────────────────────────────────────────────────────────────┘
+                                    ↓
+┌─────────────────────────────────────────────────────────────────────┐
+│  STEP 3: Simulation                                                 │
+├─────────────────────────────────────────────────────────────────────┤
+│  simulate.py          → data/processed/sim_runs/run_id=*/           │
+│                          ├── results.csv                            │
+│                          └── config.yaml                            │
+└─────────────────────────────────────────────────────────────────────┘
+                                    ↓
+┌─────────────────────────────────────────────────────────────────────┐
+│  STEP 4: Visualization                                              │
+├─────────────────────────────────────────────────────────────────────┤
+│  plot_policy.py       → docs/diagrams/                              │
+│  plot_threshold.py    → docs/diagrams/                              │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Included Data (No API Required)
+
+These files are included in the repository:
+
+| File | Description |
+|------|-------------|
+| `data/raw/costs/Historical Cost to Mine One BTC (daily).csv` | Mining cost data from CBECI |
+| `data/raw/network_delay/invstat.gpd` | KIT network delay data |
+| `mev/mev_samples_parameter_based.csv` | MEV parameter samples |
+
+### Data to Fetch (API Required)
+
+| Data | API | Script | Time |
+|------|-----|--------|------|
+| Block data | Blockchain.com | `fetch_blocks.py` | ~6-12 hours |
+| Price data | Yahoo Finance | `fetch_price.py` | ~1 min |
+| Pool & Audit | Mempool.space | `fetch_pool_audit.py` | ~2-4 hours |
+
 ## Project Structure
 
 ```
 BTC_EXP/
-├── etl/                    # Data collection & processing
-│   ├── fetch_blocks.py     # Block data from Blockchain.com
-│   ├── fetch_price.py      # Price data from Yahoo Finance
-│   ├── fetch_pool_audit.py # Pool info & audit from Mempool.space
-│   ├── build_dataset.py    # Build consolidated_block_data.csv
-│   └── build_pool_cost.py  # Build pool_daily_cost.csv
-├── sim/                    # Simulation
-│   ├── simulate.py         # Main simulation
-│   ├── config_default.yaml # Configuration
-│   ├── plot_policy.py      # Policy effect visualization
-│   └── plot_threshold.py   # Threshold analysis
-├── analysis/               # Result analysis
-│   ├── analyze_blocks.py   # Block data analysis
-│   ├── calc_pool_profit.py # Pool profit calculation
-│   └── plot_*.py           # Various plots
-└── data/
-    ├── raw/                # Source data
-    └── processed/          # Simulation inputs & outputs
+├── etl/                      # Data collection & processing
+│   ├── fetch_blocks.py       # Block data (required)
+│   ├── fetch_price.py        # Price data (required)
+│   ├── fetch_pool_audit.py   # Pool info & audit (required)
+│   ├── fetch_costs.py        # Mining costs (optional, data included)
+│   ├── fetch_mev_from_blocks.py  # MEV estimation (optional)
+│   ├── build_dataset.py      # Build consolidated dataset
+│   └── build_pool_cost.py    # Build pool cost dataset
+├── sim/                      # Simulation
+│   ├── simulate.py           # Main simulation
+│   ├── config_default.yaml   # Configuration
+│   ├── plot_policy.py        # Policy visualization
+│   └── plot_threshold.py     # Threshold analysis
+├── analysis/                 # Result analysis (optional)
+├── data/
+│   ├── raw/                  # Source data
+│   └── processed/            # Simulation inputs & outputs
+└── mev/                      # MEV parameters
 ```
 
 ## Key Parameters
@@ -61,16 +120,6 @@ BTC_EXP/
 | κ | 26.40 ms/MB | Delay per MB |
 | α | 0.125 | Base fee adjustment speed |
 | U* | 0.80 | Target utilization |
-
-## Data Sources
-
-| Data | Source | Script |
-|------|--------|--------|
-| Block data | Blockchain.com API | `etl/fetch_blocks.py` |
-| Price data | Yahoo Finance | `etl/fetch_price.py` |
-| Pool & Audit | Mempool.space API | `etl/fetch_pool_audit.py` |
-| Mining costs | CBECI | `data/raw/costs/` (included) |
-| MEV estimates | Parameter-based | `mev/` (included) |
 
 ## References
 
