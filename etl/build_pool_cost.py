@@ -56,7 +56,7 @@ def process_pool_costs():
     """
     # Define project root and file paths relative to the script location
     try:
-        PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent  # From analysis/ folder to project root
+        PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent  # From etl/ folder to project root
     except NameError:
         # Handle case where __file__ is not defined (e.g., in an interactive session)
         PROJECT_ROOT = pathlib.Path('.').resolve()

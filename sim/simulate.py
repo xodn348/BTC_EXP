@@ -2,6 +2,9 @@ import argparse, yaml, pathlib, time
 import numpy as np
 import pandas as pd
 
+# Project root for file paths
+PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
+
 
 class Miner:
     """Miner object: manages profit and deviation decision per block for each miner
@@ -337,7 +340,7 @@ def main():
 
     # Load top 13 miners from pool_daily_cost.csv
     print("=== Loading Miner Information ===\n")
-    pool_cost = pd.read_csv("data/processed/pool_daily_cost.csv")
+    pool_cost = pd.read_csv(PROJECT_ROOT / "data/processed/pool_daily_cost.csv")
     
     # 1. Calculate average share per miner
     avg_shares = pool_cost.groupby(['miner_id', 'pool_name'])['daily_share'].mean().reset_index()
@@ -360,7 +363,7 @@ def main():
 
     # Initial costs use average values (fallback, actual costs vary per block)
     avg_costs = pool_cost[pool_cost['miner_id'].isin(miner_ids)].groupby('miner_id')['cost_usd_per_day'].mean()
-    block_data_temp = pd.read_csv("data/processed/consolidated_block_data.csv")
+    block_data_temp = pd.read_csv(PROJECT_ROOT / "data/processed/consolidated_block_data.csv")
     avg_btc_price = block_data_temp['btc_usd'].mean()
     BLOCKS_PER_DAY = 144
     costs = np.array([(avg_costs.get(mid, 0) / BLOCKS_PER_DAY / avg_btc_price * 100_000_000) for mid in miner_ids])
@@ -374,13 +377,13 @@ def main():
     print(f"Daily cost data: {len(daily_costs):,} rows (top 13 miners)")
     print()
 
-    out_dir = pathlib.Path("data/processed/sim_runs") / f"run_id={time.strftime('%Y%m%d_%H%M%S')}"
+    out_dir = PROJECT_ROOT / "data/processed/sim_runs" / f"run_id={time.strftime('%Y%m%d_%H%M%S')}"
     out_dir.mkdir(parents=True, exist_ok=True)
     open(out_dir/"config.yaml","w").write(open(args.config).read())
 
     # Load block data (consolidated data: includes total_vbytes, avg_sat_per_vb, mev_sat, date, block_subsidy_sat)
     try:
-        block_data = pd.read_csv("data/processed/consolidated_block_data.csv")
+        block_data = pd.read_csv(PROJECT_ROOT / "data/processed/consolidated_block_data.csv")
         required_cols = ['total_vbytes', 'avg_sat_per_vb', 'mev_sat', 'date', 'block_subsidy_sat']
         missing_cols = [col for col in required_cols if col not in block_data.columns]
         if missing_cols:
