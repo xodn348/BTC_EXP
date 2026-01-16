@@ -37,13 +37,16 @@ def get_latest_file(directory, pattern):
 def main():
     logging.info("Starting consolidated dataset generation by block height...")
 
-    # 1. Block Data (Base)
-    block_file = get_latest_file(RAW_DIR / "blocks", "blocks_blockchain_com_*.csv")
-    if not block_file:
-        logging.error("Block data not found. (data/raw/blocks/)")
+    # 1. Block Data (Base) - Use blocks_blockchain_com for block data
+    # pool_name will be merged from audit_scores.csv later
+    blockchain_file = get_latest_file(RAW_DIR / "blocks", "blocks_blockchain_com_*.csv")
+    
+    if not blockchain_file:
+        logging.error("Block data not found. (data/raw/blocks/blocks_blockchain_com_*.csv)")
         return
-    logging.info(f"Loading block data: {block_file.name}")
-    blocks_df = pd.read_csv(block_file)
+    
+    logging.info(f"Loading block data: {blockchain_file.name}")
+    blocks_df = pd.read_csv(blockchain_file)
     
     # Date conversion (timestamp -> date)
     if 'timestamp' in blocks_df.columns:
@@ -134,7 +137,7 @@ def main():
         merged['mev_sat'] = 0
         merged['mev_usd'] = 0.0
 
-    # Merge Audit (on height)
+    # Merge Audit (on height) - always use pool_name from audit_scores.csv
     if not audit_df.empty:
         audit_cols = ['height', 'pool_name', 'match_rate']
         audit_subset = audit_df[[c for c in audit_cols if c in audit_df.columns]]
@@ -144,13 +147,22 @@ def main():
         merged['match_rate'] = None
     
     # 5. Miner ID Mapping (pool_name -> miner_id)
-    # Use consistent hardcoded mapping (same as build_pool_cost.py)
+    # Must match pool_daily_cost.csv miner_id mapping exactly
+    # Include name variations from different data sources
     pool_to_miner = {
-        "Foundry USA": 0, "AntPool": 1, "Unknown": 2,
-        "ViaBTC": 3, "F2Pool": 4, "Binance Pool": 5,
-        "Mara Pool": 6, "SBI Crypto": 7, "Braiins Pool": 8,
-        "BTC.com": 9, "Poolin": 10, "BTC M4": 11,
-        "Kucoin": 12, "KuCoin Pool": 12
+        "Foundry USA": 0, "Foundry USA Pool": 0,
+        "AntPool": 1,
+        "Unknown": 2,
+        "ViaBTC": 3,
+        "F2Pool": 4,
+        "Binance Pool": 5,
+        "Mara Pool": 6, "MARA Pool": 6,  # pools_timeseries vs audit_scores
+        "SBI Crypto": 7,
+        "Braiins Pool": 8,
+        "BTC.com": 9,
+        "Poolin": 10,
+        "BTC M4": 11, "Carbon Negative": 11,  # pools_timeseries vs audit_scores
+        "Kucoin": 12, "KuCoin Pool": 12, "KuCoinPool": 12,  # various name formats
     }
     if 'pool_name' in merged.columns:
         merged['miner_id'] = merged['pool_name'].map(pool_to_miner)
