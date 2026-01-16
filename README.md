@@ -4,7 +4,20 @@ Bitcoin miner behavior simulation for post-reward era fee policy analysis.
 
 ## Reproducibility
 
-### Quick Start (Full Pipeline)
+> **All data is included.** Run simulation immediately without API calls.  
+> To fetch fresh data from APIs, see "Full Pipeline" below.
+
+### Quick Start (No API Required)
+
+```bash
+git clone https://github.com/xodn348/BTC_EXP.git
+cd BTC_EXP
+pip install -r requirements.txt
+python sim/simulate.py --config sim/config_default.yaml
+python sim/plot_policy.py
+```
+
+### Full Pipeline (Fetch Fresh Data)
 
 ```bash
 # 1. Clone and setup
