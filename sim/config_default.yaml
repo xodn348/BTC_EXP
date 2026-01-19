@@ -14,7 +14,8 @@ lambda_block_rate: 0.00167  # blocks per second (1/600)
 w_seconds: 1.0  # Withholding delay: single value (not a grid)
 
 # Discount factor (γ) for discounted reward calculation
-# Standard value: 0.99 (industry standard for reinforcement learning and game theory)
+# Standard value: 0.99 (per-round decision model, see Paper Section 3.1)
+# "Since γ = 0.99, future payoffs are weakly discounted, miners effectively make decisions on a round-by-round basis"
 # Vi = E[Σ γ^t Πi(St, ai)]
 gamma: 0.99
 
