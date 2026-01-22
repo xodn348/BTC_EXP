@@ -153,3 +153,7 @@ BTC_EXP/
 | Base Fee | [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) |
 | MEV | Daian et al. (2020) - "Flash Boys 2.0" [IEEE S&P 2020] |
 | Orphan Rate | Decker & Wattenhofer (2013) - "Information Propagation in the Bitcoin Network" [IEEE P2P] |
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
