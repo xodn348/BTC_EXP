@@ -7,11 +7,11 @@ This file tracks where each parameter and calculation element is defined in the 
 ## Vi Calculation: Vi = E[Σ γ^t Πi(St, ai)]
 
 ### Discount Factor (γ)
-- **Value**: 0.99
-- **Definition**: [`sim/config_default.yaml`](sim/config_default.yaml) → `gamma: 0.99`
+- **Value**: 0.99993 (per-block, equivalent to 0.99 daily)
+- **Definition**: [`sim/config_default.yaml`](sim/config_default.yaml) → `gamma: 0.99993`
 - **Usage**: [`sim/simulate.py`](sim/simulate.py) → `discount = gamma ** t`
 - **Status**: ✅ Defined
-- **Rationale**: Industry standard for reinforcement learning and game theory
+- **Rationale**: Per-block discount factor γ_block = 0.99^(1/144) ≈ 0.99993, aligning block-level decisions with real-time economic horizons (144 blocks/day ≈ 1 day)
 
 ### State Variables: St = {Ft, Mt, hi, δt}
 
@@ -149,7 +149,7 @@ This file tracks where each parameter and calculation element is defined in the 
 | Parameter | Value | Location |
 |-----------|-------|----------|
 | T (simulation length) | 100,001 blocks | `config_default.yaml` |
-| γ (discount factor) | 0.99 | `config_default.yaml` |
+| γ (discount factor) | 0.99993 | `config_default.yaml` |
 | λ (block rate) | 0.00167 /sec | `config_default.yaml` |
 | base_delay_ms | 742 ms | `config_default.yaml` |
 | kappa_ms_per_MB | 26.40 ms/MB | `config_default.yaml` |

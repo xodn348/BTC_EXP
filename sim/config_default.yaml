@@ -14,10 +14,11 @@ lambda_block_rate: 0.00167  # blocks per second (1/600)
 w_seconds: 1.0  # Withholding delay: single value (not a grid)
 
 # Discount factor (γ) for discounted reward calculation
-# Standard value: 0.99 (per-round decision model, see Paper Section 3.1)
-# "Since γ = 0.99, future payoffs are weakly discounted, miners effectively make decisions on a round-by-round basis"
+# Per-block discount factor: γ_block = 0.99^(1/144) ≈ 0.99993
+# This aligns block-level decisions with real-time economic horizons (144 blocks/day ≈ 1 day)
+# Annual discount factor: 0.99 (daily discount factor: 0.99^(1/365) ≈ 0.999972)
 # Vi = E[Σ γ^t Πi(St, ai)]
-gamma: 0.99
+gamma: 0.99993
 
 # Base fee update parameters (Paper Section 5.3.1)
 # basefee0: Initial Base Fee unit price (sat/vB)

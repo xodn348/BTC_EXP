@@ -129,7 +129,7 @@ BTC_EXP/
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| γ (gamma) | 0.99 | Discount factor |
+| γ (gamma) | 0.99993 | Discount factor (per-block, equivalent to 0.99 daily) |
 | λ | 0.00167 | Block rate (1/600 sec) |
 | base_delay | 742 ms | Base network delay |
 | κ | 26.40 ms/MB | Delay per MB |
