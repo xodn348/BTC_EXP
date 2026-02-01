@@ -127,7 +127,7 @@ python sim/simulate.py --config sim/config_default.yaml
 - `data/processed/sim_runs/run_id=YYYYMMDD_HHMMSS/config.yaml`
 
 **Evaluation Metrics**:
-- `beta_bar` - Deviation ratio (BFT stability: β < 1/3)
+- `theta_bar` - Deviation ratio (BFT stability: θ < 1/3)
 - `ROI_mean` - Average return on investment
 - `stable_bft` - BFT stability flag
 - `rho_honest`, `rho_dev` - Orphan rates

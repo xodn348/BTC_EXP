@@ -35,7 +35,7 @@ alpha: 0.125  # Base fee adjustment speed
 
 # Policy parameters for Chapter 6 evaluation
 U_star_grid: [0.80]              # Single value (for sensitivity analysis)
-delta_grid: [0.10]               # Single value (for sensitivity analysis)
+beta_grid: [0.10]                # Single value (for sensitivity analysis)
 # Block size limits (vbytes basis)
 # Paper 5.3.1: B_min = 1 MB, B_max = 2 MB (vbytes basis)
 B_min_vB: 1000000                 # Minimum block size: 1 MB = 1,000,000 vB

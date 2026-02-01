@@ -135,12 +135,12 @@ This file tracks where each parameter and calculation element is defined in the 
 
 ### Adaptive Block Size
 - **Formula**:
-  - If U_t > U*: B(t+1) = min(B_max, (1 + δ) × B_t)
-  - If U_t < U*: B(t+1) = max(B_min, (1 - δ) × B_t)
+  - If U_t > U*: B(t+1) = min(B_max, (1 + β) × B_t)
+  - If U_t < U*: B(t+1) = max(B_min, (1 - β) × B_t)
 - **Parameters**:
   - `B_min_vB`: 1,000,000 vB (1 MB)
   - `B_max_vB`: 2,000,000 vB (2 MB)
-  - `delta_step`: 0.10 (10% adjustment)
+  - `beta_step`: 0.10 (10% adjustment)
 - **Definition**: [`sim/config_default.yaml`](sim/config_default.yaml)
 - **Status**: ✅ Defined
 
@@ -156,7 +156,7 @@ This file tracks where each parameter and calculation element is defined in the 
 | w_seconds | 1.0 s | `config_default.yaml` |
 | alpha | 0.125 | `config_default.yaml` |
 | U_star | 0.80 | `config_default.yaml` |
-| delta_step | 0.10 | `config_default.yaml` |
+| beta_step | 0.10 | `config_default.yaml` |
 
 ## Policy Groups
 
@@ -176,7 +176,7 @@ This file tracks where each parameter and calculation element is defined in the 
 | G_ratio | [0.0, 0.0017, 0.005, 0.01, 0.015] |
 | fee_floor_sat | [0, 20M, 40M, 60M] |
 | U_star | [0.80] |
-| delta_step | [0.10] |
+| beta_step | [0.10] |
 
 ## Data Files
 

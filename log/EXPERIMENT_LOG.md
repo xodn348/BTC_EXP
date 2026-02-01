@@ -15,7 +15,7 @@ This file records the experiment progress, results, findings, and issues on a da
 ## 2025-11-10 (Sun)
 
 **Completed**: Data collection scripts written, simulation input generated with sample data and basic simulation run (8 runs, all stable_bft=False)
-**Findings**: Fork rate increases with block size B (B=1,2: 0.0, B=4: ~0.06, B=8: ~0.22), BFT stability not achieved at beta_bar=1.0, dev_profit calculation is placeholder
+**Findings**: Fork rate increases with block size B (B=1,2: 0.0, B=4: ~0.06, B=8: ~0.22), BFT stability not achieved at theta_bar=1.0, dev_profit calculation is placeholder
 **Issues**: dev_profit calculation logic is placeholder (`honest_profit + 0.05`), actual deviation mechanism implementation needed
 
 ---

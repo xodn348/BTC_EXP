@@ -126,7 +126,7 @@ def plot_policy_config_and_effect(df):
     for policy, label, has_ff in policies:
         ff_sat = FF_VALUE if has_ff else 0
         p_data = df[(df['policy_group'] == policy) & (df['G_ratio'] == G_RATIO) & (df['fee_floor_sat'] == ff_sat)]
-        val = p_data['beta_bar'].values[0] * 100 if len(p_data) > 0 else 0
+        val = p_data['theta_bar'].values[0] * 100 if len(p_data) > 0 else 0
         values.append(val)
         labels.append(label)
     
@@ -192,7 +192,7 @@ def plot_fee_floor_effect(df):
         values = []
         for ff in ff_values:
             p_data = df[(df['policy_group'] == policy) & (df['G_ratio'] == g_target) & (df['fee_floor_sat'] == ff)]
-            val = p_data['beta_bar'].values[0] * 100 if len(p_data) > 0 else 0
+            val = p_data['theta_bar'].values[0] * 100 if len(p_data) > 0 else 0
             values.append(val)
         
         bars = ax.bar(x + (i - 1) * width, values, width, label=label, color=color, edgecolor='black', linewidth=1)
@@ -259,12 +259,12 @@ def generate_latex_table(df):
         ad_str = r"\checkmark" if ad else "-"
         
         if len(p_data) > 0:
-            beta = p_data['beta_bar'].values[0] * 100
-            beta_str = f"{beta:.1f}" if beta >= 1 else r"\textbf{0.0}"
+            theta = p_data['theta_bar'].values[0] * 100
+            theta_str = f"{theta:.1f}" if theta >= 1 else r"\textbf{0.0}"
         else:
-            beta_str = "-"
+            theta_str = "-"
         
-        row = f"{label} & {bf_str} & {ff_str} & {ad_str} & {beta_str} \\\\"
+        row = f"{label} & {bf_str} & {ff_str} & {ad_str} & {theta_str} \\\\"
         print(row)
     
     print(r"""\hline

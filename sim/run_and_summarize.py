@@ -60,8 +60,8 @@ def create_summary_table(results_path):
     # 1. Overall summary table
     summary_data = {
         'Metric': [
-            'beta_bar (mean)',
-            'beta_bar (range)',
+            'theta_bar (mean)',
+            'theta_bar (range)',
             'ROI_mean (mean)',
             'ROI_mean (range)',
             'stable_bft',
@@ -71,8 +71,8 @@ def create_summary_table(results_path):
             'Number of policy combinations'
         ],
         'Value': [
-            f"{results['beta_bar'].mean():.4f}",
-            f"{results['beta_bar'].min():.4f} ~ {results['beta_bar'].max():.4f}",
+            f"{results['theta_bar'].mean():.4f}",
+            f"{results['theta_bar'].min():.4f} ~ {results['theta_bar'].max():.4f}",
             f"{results['ROI_mean'].mean():.4f}",
             f"{results['ROI_mean'].min():.4f} ~ {results['ROI_mean'].max():.4f}",
             f"{results['stable_bft'].value_counts().to_dict()}",
@@ -92,7 +92,7 @@ def create_summary_table(results_path):
             policy_comparison.append({
                 'Policy Group': policy,
                 'Policy Description': 'Base Fee + Fee Floor + Adaptive' if policy == 'A_ON' else 'Adaptive only',
-                'beta_bar (mean)': f"{policy_data['beta_bar'].mean():.4f}",
+                'theta_bar (mean)': f"{policy_data['theta_bar'].mean():.4f}",
                 'ROI (mean)': f"{policy_data['ROI_mean'].mean():.4f}",
                 'ROI (std)': f"{policy_data['ROI_std'].mean():.4f}",
                 'stable_bft': f"{policy_data['stable_bft'].sum()} / {len(policy_data)}",
@@ -104,7 +104,7 @@ def create_summary_table(results_path):
     # 3. Detailed parameter table
     detail_cols = [
         'policy_group', 'G_ratio', 'fee_floor_sat',
-        'beta_bar', 'ROI_mean', 'ROI_std',
+        'theta_bar', 'ROI_mean', 'ROI_std',
         'stable_bft', 'rho_honest', 'rho_dev', 'pr_D_ge_1'
     ]
     # Remove missing columns
@@ -113,10 +113,10 @@ def create_summary_table(results_path):
     detail_df = detail_df.sort_values(['policy_group', 'G_ratio', 'fee_floor_sat'])
     
     # Number formatting
-    for col in ['beta_bar', 'ROI_mean', 'ROI_std', 'rho_honest', 'rho_dev', 'pr_D_ge_1']:
+    for col in ['theta_bar', 'ROI_mean', 'ROI_std', 'rho_honest', 'rho_dev', 'pr_D_ge_1']:
         if col not in detail_df.columns:
             continue
-        if col == 'beta_bar':
+        if col == 'theta_bar':
             detail_df[col] = detail_df[col].apply(lambda x: f"{x:.4f}")
         elif col in ['ROI_mean', 'ROI_std']:
             detail_df[col] = detail_df[col].apply(lambda x: f"{x:.4f}")
@@ -158,8 +158,8 @@ def create_summary_table(results_path):
         
         f.write("## 3. Key Findings\n\n")
         f.write("### ⚠️ Warnings:\n")
-        if results['beta_bar'].mean() > 0.33:
-            f.write(f"- **beta_bar = {results['beta_bar'].mean():.4f}**: Does not satisfy BFT stability condition (beta_bar > 1/3)\n")
+        if results['theta_bar'].mean() > 0.33:
+            f.write(f"- **theta_bar = {results['theta_bar'].mean():.4f}**: Does not satisfy BFT stability condition (theta_bar > 1/3)\n")
         if results['ROI_mean'].mean() < 0:
             f.write(f"- **ROI = {results['ROI_mean'].mean():.4f}**: Costs exceed revenue (negative ROI)\n")
         

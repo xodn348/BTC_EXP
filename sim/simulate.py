@@ -77,7 +77,7 @@ def run_once(
     base_delay, kappa, gamma, lambda_rate, w_sec,
     basefee0,
     enable_basefee=True, enable_feefloor=False, fee_floor_sat=0.0,
-    enable_adaptive=False, B_min_vB=1_000_000, B_max_vB=2_000_000, U_star=0.75, delta_step=0.05,
+    enable_adaptive=False, B_min_vB=1_000_000, B_max_vB=2_000_000, U_star=0.75, beta_step=0.05,
     G_norm=1.0, alpha=0.125,
     block_data=None,  # Actual block data (DataFrame): includes total_vbytes, avg_sat_per_vb, mev_sat, date
     daily_costs=None,  # Daily miner costs (DataFrame): date, miner_id, cost_usd_per_day
@@ -141,9 +141,9 @@ def run_once(
         # Paper 5.3.1: B_min = 1 MB, B_max = 2 MB
         # B_max_vB is set in config (default 2,000,000 vB = 2 MB)
         if U_t > U_star:
-            return min(B_max_vB, (1 + delta_step) * Bt_vB)
+            return min(B_max_vB, (1 + beta_step) * Bt_vB)
         if U_t < U_star:
-            return max(B_min_vB, (1 - delta_step) * Bt_vB)
+            return max(B_min_vB, (1 - beta_step) * Bt_vB)
         return Bt_vB
 
     # ========== Main simulation loop (Paper Algorithm 1) ==========
@@ -269,7 +269,7 @@ def run_once(
             # if Π_dev(t) ≥ Π_hon(t) then deviation else honest
             dev_flag = miner.decide_and_record(t, profit_honest, profit_dev)
         
-        # 8) Calculate beta_bar: deviation status of actual miner
+        # 8) Calculate theta_bar: deviation status of actual miner
         if actual_miner_idx is not None:
             actual_blocks_count += 1
             # Get dev_flag from actual miner's last record
@@ -307,7 +307,7 @@ def run_once(
         miner.compute_vi_post(gamma)
 
     # ========== Aggregate results ==========
-    beta_bar = deviates / actual_blocks_count if actual_blocks_count > 0 else 0.0
+    theta_bar = deviates / actual_blocks_count if actual_blocks_count > 0 else 0.0
     # Use theoretical rho values (based on last block)
     rho_honest_final = last_rho_honest if 'last_rho_honest' in dir() else 0.0
     rho_dev_final = last_rho_dev if 'last_rho_dev' in dir() else 0.0
@@ -319,7 +319,7 @@ def run_once(
     ROI_mean = float(ROI_per_miner.mean())
     ROI_std = float(ROI_per_miner.std())
     
-    stable_bft = beta_bar < (1/3)
+    stable_bft = theta_bar < (1/3)
 
     dt_arr = np.array(dt_list)
     pr_D_ge_1 = float((dt_arr >= 1.0).mean())
@@ -330,12 +330,12 @@ def run_once(
     history_records = history_df.to_dict('records') if not history_df.empty else []
 
     return dict(
-        beta_bar=beta_bar,
+        theta_bar=theta_bar,
         ROI_mean=ROI_mean, ROI_std=ROI_std,
         stable_bft=stable_bft,
         rho_honest=rho_honest_final, rho_dev=rho_dev_final,
         pr_D_ge_1=pr_D_ge_1,
-        U_star=U_star, delta_step=delta_step,
+        U_star=U_star, beta_step=beta_step,
         enable_basefee=enable_basefee, enable_feefloor=enable_feefloor, enable_adaptive=enable_adaptive,
         fee_floor_sat=fee_floor_sat, B_min_vB=B_min_vB, B_max_vB=B_max_vB,
         w_sec=w_sec, alpha=alpha,
@@ -452,7 +452,7 @@ def main():
 
     # Parameter grids (read from config)
     U_star_grid = cfg.get("U_star_grid", [0.80])
-    delta_grid = cfg.get("delta_grid", [0.10])
+    beta_grid = cfg.get("beta_grid", [0.10])
     G_ratio_grid = cfg["G_ratio_grid"]  # Required in config
     fee_floor_grid = cfg["fee_floor_grid"]  # Required in config
     
@@ -500,7 +500,7 @@ def main():
     
     run_count = 0
     U_star = U_star_grid[0]  # Use single value
-    delta_step = delta_grid[0]  # Use single value
+    beta_step = beta_grid[0]  # Use single value
 
     for G_ratio in G_ratio_grid:
         # G_t = G_ratio × X_t_avg
@@ -525,7 +525,7 @@ def main():
                     enable_adaptive=pg["adaptive"], 
                     B_min_vB=cfg.get("B_min_vB", 1_000_000), 
                     B_max_vB=cfg.get("B_max_vB", 2_000_000),
-                    U_star=U_star, delta_step=delta_step,
+                    U_star=U_star, beta_step=beta_step,
                     G_norm=G_norm,
                     alpha=alpha,
                     block_data=block_data,
