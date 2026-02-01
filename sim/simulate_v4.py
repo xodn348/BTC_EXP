@@ -345,14 +345,14 @@ def run_once(
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--config", default="sim/config_default.yaml")
+    ap.add_argument("--config", default="sim/config_v4.yaml")
     args = ap.parse_args()
     cfg = yaml.safe_load(open(args.config))
     # random_seed no longer used (random sampling removed)
 
     # Load top 13 miners from pool_daily_cost.csv
     print("=== Loading Miner Information ===\n")
-    pool_cost = pd.read_csv(PROJECT_ROOT / "data/processed/pool_daily_cost.csv")
+    pool_cost = pd.read_csv(PROJECT_ROOT / "data/processed/pool_daily_cost_v4.csv")
     
     # 1. Calculate average share per miner
     avg_shares = pool_cost.groupby(['miner_id', 'pool_name'])['daily_share'].mean().reset_index()
@@ -391,7 +391,7 @@ def main():
     print(f"Daily cost data: {len(daily_costs):,} rows (top 13 miners)")
     print()
 
-    out_dir = PROJECT_ROOT / "data/processed/sim_runs" / f"run_id={time.strftime('%Y%m%d_%H%M%S')}"
+    out_dir = PROJECT_ROOT / "data/processed/sim_runs_v4" / f"run_id={time.strftime('%Y%m%d_%H%M%S')}"
     out_dir.mkdir(parents=True, exist_ok=True)
     open(out_dir/"config.yaml","w").write(open(args.config).read())
 

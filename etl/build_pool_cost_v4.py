@@ -2,15 +2,18 @@
 """
 Processes raw electricity consumption data to compute mining electricity costs per day for each mining pool.
 
+Based on Alexander Neumueller's formula:
+  cost_per_block(t) = ((GUESS(t) / 365.25) * 1e9 * p_e) / BlockCount(t)
+
 This script performs the following steps:
 1. Loads the annualised electricity consumption estimate (GUESS(t)) from a raw CSV file.
-2. Computes daily network electricity cost using:
-      CostDay_net(t) = (GUESS(t)/365.25) * 1e9 * p_e
+2. Computes BlockCount(t) from historical block data (group-by date).
+3. Computes cost per block:
+      cost_per_block(t) = ((GUESS(t)/365.25) * 1e9 * p_e) / BlockCount(t)
    where p_e is electricity price (USD/kWh) and 1e9 converts TWh→kWh.
-3. Computes BlockCount(t) from historical block data (group-by date).
-4. Allocates daily network cost to pools by their daily share:
-      CostDay_i(t) = CostDay_net(t) * share_i(t)
-5. Overwrites data/processed/pool_daily_cost.csv with updated cost_usd_per_day.
+4. Allocates cost to each pool by actual blocks mined:
+      cost_i(t) = cost_per_block(t) * blocks_mined_i(t)
+5. Saves to data/processed/pool_daily_cost_v4.csv.
 
 Note: This replaces earlier "cost to mine 1 BTC" based proxy, which may contain known inconsistencies.
 """
@@ -68,8 +71,8 @@ def process_pool_costs():
     ELECTRICITY_GUESS_PATH = PROJECT_ROOT / "data/raw/costs/Historical annualised electricity consumption.csv"
     BLOCK_DATA_PATH = PROJECT_ROOT / "data/processed/consolidated_block_data.csv"
     # The target file also serves as the source for daily share information.
-    POOL_DATA_PATH = PROJECT_ROOT / "data/processed/pool_daily_cost.csv"
-    OUTPUT_PATH = POOL_DATA_PATH # Overwrite the existing file
+    POOL_DATA_PATH = PROJECT_ROOT / "data/processed/pool_daily_cost_v4.csv"
+    OUTPUT_PATH = POOL_DATA_PATH # v4: GUESS-based electricity cost
 
     # --- Configuration ---
     ELECTRICITY_PRICE_USD_PER_KWH = 0.05  # per paper / dataset assumption
@@ -95,29 +98,22 @@ def process_pool_costs():
         print(f"Error processing electricity consumption file '{ELECTRICITY_GUESS_PATH}': {e}")
         return
 
-    # 2) Compute daily block count BlockCount(t) and pool daily shares from consolidated block data
+    # 2) Compute BlockCount(t) and blocks_mined per pool from consolidated block data
     try:
         block_df = pd.read_csv(BLOCK_DATA_PATH, usecols=["date", "miner_id", "pool_name"])
         block_df["date"] = pd.to_datetime(block_df["date"]).dt.normalize()
         block_df = block_df.dropna(subset=["miner_id"])
         block_df["miner_id"] = block_df["miner_id"].astype(int)
 
+        # BlockCount(t): total blocks mined on each day
         block_count_df = block_df.groupby("date").size().reset_index(name="block_count")
 
-        # share_i(t) = blocks_mined_i(t) / total_blocks(t)
+        # blocks_mined_i(t): blocks mined by each pool on each day
         mined_df = (
             block_df.groupby(["date", "miner_id", "pool_name"])
             .size()
             .reset_index(name="blocks_mined")
         )
-        shares_df = pd.merge(
-            mined_df,
-            block_count_df.rename(columns={"block_count": "total_blocks"}),
-            on="date",
-            how="left",
-        )
-        shares_df["daily_share"] = shares_df["blocks_mined"] / shares_df["total_blocks"]
-        shares_df = shares_df[["date", "miner_id", "pool_name", "daily_share"]].copy()
     except FileNotFoundError:
         print(f"Error: Block data file not found at {BLOCK_DATA_PATH}")
         return
@@ -131,11 +127,10 @@ def process_pool_costs():
         (elec_df["guess_twh_annual"] / 365.25) * 1e9 * ELECTRICITY_PRICE_USD_PER_KWH
     )
 
-    # shares_df is derived from historical blocks above to ensure date alignment.
-
-    # 4) Merge shares with electricity costs and block counts by date
-    merged_df = pd.merge(shares_df, elec_df[["date", "cost_usd_net_per_day"]], on="date", how="left")
-    merged_df = pd.merge(merged_df, block_count_df, on="date", how="left")
+    # 4) Merge to compute cost_per_block(t)
+    # cost_per_block(t) = CostDay_net(t) / BlockCount(t)
+    merged_df = pd.merge(mined_df, block_count_df, on="date", how="left")
+    merged_df = pd.merge(merged_df, elec_df[["date", "cost_usd_net_per_day"]], on="date", how="left")
 
     # Forward-fill GUESS-based daily cost if there are occasional missing days
     merged_df = merged_df.sort_values(["date", "miner_id"])
@@ -148,15 +143,23 @@ def process_pool_costs():
         print(f"Warning: Dropping {n_missing} rows due to missing GUESS(t) cost or block_count.")
         merged_df = merged_df.loc[~missing].copy()
 
-    # 5) Allocate daily network cost to pools by share
-    merged_df["cost_usd_per_day"] = merged_df["cost_usd_net_per_day"] * merged_df["daily_share"]
+    # 5) Compute cost_per_block and allocate to pools by actual blocks mined
+    # cost_per_block(t) = CostDay_net(t) / BlockCount(t)
+    merged_df["cost_per_block"] = merged_df["cost_usd_net_per_day"] / merged_df["block_count"]
+    
+    # cost_i(t) = cost_per_block(t) * blocks_mined_i(t)
+    merged_df["cost_usd_per_day"] = merged_df["cost_per_block"] * merged_df["blocks_mined"]
+    
+    # Also keep daily_share for reference
+    merged_df["daily_share"] = merged_df["blocks_mined"] / merged_df["block_count"]
 
     # 6) Prepare the final dataframe and save
-    output_df = merged_df[["date", "miner_id", "pool_name", "daily_share", "cost_usd_per_day"]].copy()
+    output_df = merged_df[["date", "miner_id", "pool_name", "blocks_mined", "block_count", "cost_per_block", "daily_share", "cost_usd_per_day"]].copy()
     output_df['date'] = output_df['date'].dt.strftime('%Y-%m-%d')
     output_df.to_csv(OUTPUT_PATH, index=False, float_format='%.10f')
 
     print(f"Successfully processed and updated cost data in '{OUTPUT_PATH}'")
+    print(f"Sample cost_per_block: ${output_df['cost_per_block'].iloc[0]:,.2f}")
     print(f"Electricity price (USD/kWh): {ELECTRICITY_PRICE_USD_PER_KWH}")
 
 if __name__ == "__main__":

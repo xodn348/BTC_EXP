@@ -1,0 +1,56 @@
+# Network delay parameters (calculated from KIT invstat.gpd data)
+# Formula: δt = base_delay_ms + kappa_ms_per_MB * B_MB
+base_delay_ms: 742      # Base network delay (ms) - calculated from block height 790,000-890,000 period
+kappa_ms_per_MB: 26.40  # Additional delay per MB (ms/MB) - calculated via linear regression
+T: 100001  # Matches block data count (100,001 blocks)
+# Block generation rate (Poisson process)
+# Bitcoin: average 1 block per 600 seconds (10 minutes)
+lambda_block_rate: 0.00167  # blocks per second (1/600)
+
+# Deviation propagation delay parameter (w)
+# Based on Eyal & Sirer (Selfish Mining): seconds-scale is the core scale
+# delta_dev(B) = delta_hon(B) + w
+# w: additional propagation delay due to withholding strategy (seconds)
+w_seconds: 1.0  # Withholding delay: single value (not a grid)
+
+# Discount factor (γ) for discounted reward calculation
+# Per-block discount factor: γ_block = 0.99^(1/144) ≈ 0.99993
+# This aligns block-level decisions with real-time economic horizons (144 blocks/day ≈ 1 day)
+# Annual discount factor: 0.99 (daily discount factor: 0.99^(1/365) ≈ 0.999972)
+# Vi = E[Σ γ^t Πi(St, ai)]
+gamma: 0.99993
+
+# Base fee update parameters (Paper Section 5.3.1)
+# basefee0: Initial Base Fee unit price (sat/vB)
+# Data reference: mean 36.73 sat/vB, median 17.95 sat/vB
+basefee0: 20           # Initial base fee (sat/vB) - near median
+
+# Block capacity parameter (calculated from actual block data)
+# Based on block height 790,000-890,000 data analysis
+# Block size limit: B_min_vB to B_max_vB (in vbytes)
+# Note: Bitcoin max weight = 4,000,000, vbytes = weight / 4
+
+# Base fee adjustment speed (α in Paper Eq. 5.5)
+alpha: 0.125  # Base fee adjustment speed
+
+# Policy parameters for Chapter 6 evaluation
+U_star_grid: [0.80]              # Single value (for sensitivity analysis)
+delta_grid: [0.10]               # Single value (for sensitivity analysis)
+# Block size limits (vbytes basis)
+# Paper 5.3.1: B_min = 1 MB, B_max = 2 MB (vbytes basis)
+B_min_vB: 1000000                 # Minimum block size: 1 MB = 1,000,000 vB
+B_max_vB: 2000000                 # Maximum block size: 2 MB = 2,000,000 vB
+
+# Fee Floor grid (sat): 0, 20M, 40M, 60M
+fee_floor_grid: [0, 20000000, 40000000, 60000000]
+
+# G_t ratio grid (% of X_t)
+# 0%, 0.17% (threshold), 0.5%, 1.0%, 1.5%
+G_ratio_grid: [0.0, 0.0017, 0.005, 0.01, 0.015]
+
+# Block reward setting
+include_block_reward: false        # false: R_t = 0 (future scenario), true: use actual block reward
+
+# Data sources (now using CSV files directly)
+# - Block data: data/processed/consolidated_block_data.csv
+# - Miner costs: data/processed/pool_daily_cost.csv
