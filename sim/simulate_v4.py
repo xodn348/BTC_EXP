@@ -77,7 +77,7 @@ def run_once(
     base_delay, kappa, gamma, lambda_rate, w_sec,
     basefee0,
     enable_basefee=True, enable_feefloor=False, fee_floor_sat=0.0,
-    enable_adaptive=False, B_min_vB=1_000_000, B_max_vB=2_000_000, U_star=0.75, beta_step=0.05,
+    enable_adaptive=False, B_min_vB=1_000_000, B_max_vB=2_000_000, U_star=0.75, beta_step=0.05, adaptive_epoch=1,
     G_norm=1.0, alpha=0.125,
     block_data=None,  # Actual block data (DataFrame): includes total_vbytes, avg_sat_per_vb, mev_sat, date
     daily_costs=None,  # Daily miner costs (DataFrame): date, miner_id, cost_usd_per_day
@@ -157,10 +157,10 @@ def run_once(
     total_honest_blocks = orphan_honest_blocks = 0
     total_dev_blocks = orphan_dev_blocks = 0
     dt_list = []
+    U_history = []  # U_t history for computing \bar{U}_t (epoch-averaged utilization)
     
     basefee = basefee0
     Bt_vB = B_min_vB
-    Bt_MB = B_min_vB / 1_000_000
     
     for t in range(T):
         # 1) Load block data
@@ -190,10 +190,16 @@ def run_once(
         # Adaptive adjusts Bt_vB → U_t changes → Base Fee stabilizes
         U_t = min(1.0, vB_t / Bt_vB)
         
-        # Apply Adaptive Block Size (Paper Eq. 5.12)
-        # U_t > U* → increase block size → U_t decreases
-        # U_t < U* → decrease block size → U_t increases
-        Bt_vB = adaptive_B(Bt_vB, U_t)
+        # Adaptive Block Size (Paper Eq. 5.12) — epoch-based adjustment
+        # \bar{U}_t = (1/N) * sum_{i=t-N+1}^{t} U_i, where N = adaptive_epoch
+        # Block size adjusts once per epoch using \bar{U}_t instead of per-block U_t
+        U_history.append(U_t)
+        if adaptive_epoch <= 1:
+            # Per-block adjustment (fallback behavior)
+            Bt_vB = adaptive_B(Bt_vB, U_t)
+        elif t > 0 and t % adaptive_epoch == 0:
+            U_bar_t = np.mean(U_history[-adaptive_epoch:])
+            Bt_vB = adaptive_B(Bt_vB, U_bar_t)
         Bt_MB = Bt_vB / 1_000_000
         
         # Update base fee (Paper Eq. 5.5)
@@ -335,7 +341,7 @@ def run_once(
         stable_bft=stable_bft,
         rho_honest=rho_honest_final, rho_dev=rho_dev_final,
         pr_D_ge_1=pr_D_ge_1,
-        U_star=U_star, beta_step=beta_step,
+        U_star=U_star, beta_step=beta_step, adaptive_epoch=adaptive_epoch,
         enable_basefee=enable_basefee, enable_feefloor=enable_feefloor, enable_adaptive=enable_adaptive,
         fee_floor_sat=fee_floor_sat, B_min_vB=B_min_vB, B_max_vB=B_max_vB,
         w_sec=w_sec, alpha=alpha,
@@ -501,6 +507,7 @@ def main():
     run_count = 0
     U_star = U_star_grid[0]  # Use single value
     beta_step = beta_grid[0]  # Use single value
+    adaptive_epoch = cfg.get("adaptive_epoch", 1)  # Epoch length for adaptive block size (1 = per-block)
 
     for G_ratio in G_ratio_grid:
         # G_t = G_ratio × X_t_avg
@@ -525,7 +532,7 @@ def main():
                     enable_adaptive=pg["adaptive"], 
                     B_min_vB=cfg.get("B_min_vB", 1_000_000), 
                     B_max_vB=cfg.get("B_max_vB", 2_000_000),
-                    U_star=U_star, beta_step=beta_step,
+                    U_star=U_star, beta_step=beta_step, adaptive_epoch=adaptive_epoch,
                     G_norm=G_norm,
                     alpha=alpha,
                     block_data=block_data,
