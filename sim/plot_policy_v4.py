@@ -55,7 +55,7 @@ def load_data():
 def plot_policy_config_and_effect(df):
     """Policy configuration table + bar chart comparing policy effects"""
     fig, axes = plt.subplots(1, 2, figsize=(16, 7), gridspec_kw={'width_ratios': [1.2, 2]})
-    fig.suptitle('Analysis by Policies - V4 Cost', fontsize=22, fontweight='bold', y=1.02)
+    fig.suptitle('Analysis by Policies', fontsize=22, fontweight='bold', y=1.02)
     
     # ===== Left: 6 policy table =====
     ax_table = axes[0]
@@ -175,7 +175,7 @@ def plot_policy_config_and_effect(df):
 def plot_fee_floor_effect(df):
     """Fee Floor effect visualization (FF value comparison at G_ratio = 0.17%)"""
     fig, ax = plt.subplots(figsize=(12, 7))
-    fig.suptitle('Fee Floor Effect on Deviation Rate - V4 Cost (G_ratio = 0.17%)', fontsize=20, fontweight='bold', y=1.02)
+    fig.suptitle('Fee Floor Effect on Deviation Rate (G_ratio = 0.17%)', fontsize=20, fontweight='bold', y=1.02)
     
     g_target = 0.0017
     ff_values = [0, 20000000, 40000000, 60000000]

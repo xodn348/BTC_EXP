@@ -134,14 +134,17 @@ This file tracks where each parameter and calculation element is defined in the 
 - **Status**: ✅ Defined
 
 ### Adaptive Block Size
-- **Formula**:
-  - If U_t > U*: B(t+1) = min(B_max, (1 + β) × B_t)
-  - If U_t < U*: B(t+1) = max(B_min, (1 - β) × B_t)
+- **Epoch-averaged utilization**:
+  - `\bar{U}_t = (1/144) × Σ_{i=t-143}^{t} U_i`
+- **Adjustment rule** (applied once per epoch):
+  - If `\bar{U}_t > U*`: `B(t+1) = min(B_max, (1 + β) × B_t)`
+  - If `\bar{U}_t < U*`: `B(t+1) = max(B_min, (1 - β) × B_t)`
 - **Parameters**:
   - `B_min_vB`: 1,000,000 vB (1 MB)
   - `B_max_vB`: 2,000,000 vB (2 MB)
-  - `beta_step`: 0.10 (10% adjustment)
-- **Definition**: [`sim/config_default.yaml`](sim/config_default.yaml)
+  - `beta_step`: 0.10 (10% adjustment per epoch)
+  - `adaptive_epoch`: 144 blocks (≈ 1 day)
+- **Definition**: [`sim/config_v4.yaml`](sim/config_v4.yaml)
 - **Status**: ✅ Defined
 
 ## Simulation Parameters
@@ -157,6 +160,7 @@ This file tracks where each parameter and calculation element is defined in the 
 | alpha | 0.125 | `config_default.yaml` |
 | U_star | 0.80 | `config_default.yaml` |
 | beta_step | 0.10 | `config_default.yaml` |
+| adaptive_epoch | 144 | `config_v4.yaml` |
 
 ## Policy Groups
 
@@ -177,6 +181,7 @@ This file tracks where each parameter and calculation element is defined in the 
 | fee_floor_sat | [0, 20M, 40M, 60M] |
 | U_star | [0.80] |
 | beta_step | [0.10] |
+| adaptive_epoch | [144] |
 
 ## Data Files
 
