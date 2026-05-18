@@ -16,7 +16,7 @@ M (MEV): Zero-inflated Lognormal distribution samples (based on Ethereum researc
 Cost: CBECI "Cost to Mine One BTC" × block reward → distributed proportionally by miner share
 Vi = Σ γ^t × Πi(St, ai) (discounted sum of miner's profit in every round)
 
-Test whether Vi_honest > Vi_deviation and the network satisfies BFT threshold which is dev < 1/3.
+Test whether Vi_honest > Vi_deviation and the network satisfies BFT threshold which is dev < 1/2.
 
 
 Direction:

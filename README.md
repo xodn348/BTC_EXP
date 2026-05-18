@@ -149,6 +149,7 @@ BTC_EXP/
 |---------|-----------|
 | Selfish Mining | Eyal & Sirer (2014) - "Majority is not enough" [FC 2014] |
 | Bitcoin Backbone | Garay et al. (2015) - "The Bitcoin Backbone Protocol" [EUROCRYPT 2015] |
+| Bitcoin Backbone (Variable Difficulty) | Garay et al. (2017) - "The Bitcoin Backbone Protocol with Chains of Variable Difficulty" [CRYPTO 2017] |
 | Fee Instability | Carlsten et al. (2016) - "On the Instability of Bitcoin Without the Block Reward" [CCS 2016] |
 | Base Fee | [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) |
 | MEV | Daian et al. (2020) - "Flash Boys 2.0" [IEEE S&P 2020] |

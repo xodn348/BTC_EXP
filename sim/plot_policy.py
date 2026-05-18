@@ -139,9 +139,9 @@ def plot_policy_config_and_effect(df):
                 f'{val:.1f}%', ha='center', va='bottom', fontsize=14, fontweight='bold')
     
     # BFT threshold line
-    ax.axhline(y=33.3, color='red', linestyle='--', linewidth=2.5)
-    ax.fill_between([-0.5, 5.5], 33.3, 105, alpha=0.15, color='red')
-    ax.text(-0.3, 35, 'BFT Threshold (33.3%)', fontsize=18, color='red', ha='left', fontweight='bold')
+    ax.axhline(y=50, color='red', linestyle='--', linewidth=2.5)
+    ax.fill_between([-0.5, 5.5], 50, 105, alpha=0.15, color='red')
+    ax.text(-0.3, 52, 'BFT Threshold (50%)', fontsize=18, color='red', ha='left', fontweight='bold')
     
     ax.set_xlabel('Policy', fontweight='bold', fontsize=16)
     ax.set_ylabel('Deviation Rate β (%)', fontweight='bold', fontsize=16)
@@ -204,9 +204,9 @@ def plot_fee_floor_effect(df):
                         f'{val:.1f}%', ha='center', va='bottom', fontsize=10, fontweight='bold')
     
     # BFT threshold line
-    ax.axhline(y=33.3, color='red', linestyle='--', linewidth=2.5)
-    ax.fill_between([-0.5, 3.5], 33.3, 75, alpha=0.15, color='red')
-    ax.text(3.3, 35, 'BFT Threshold', fontsize=14, color='red', ha='right', fontweight='bold')
+    ax.axhline(y=50, color='red', linestyle='--', linewidth=2.5)
+    ax.fill_between([-0.5, 3.5], 50, 75, alpha=0.15, color='red')
+    ax.text(3.3, 52, 'BFT Threshold', fontsize=14, color='red', ha='right', fontweight='bold')
     
     ax.set_xlabel('Fee Floor (sat)', fontweight='bold', fontsize=16)
     ax.set_ylabel('Deviation Rate β (%)', fontweight='bold', fontsize=16)

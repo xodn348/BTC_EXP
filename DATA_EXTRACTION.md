@@ -189,7 +189,7 @@ BFT stability metric:
 ```
 β = (1/N) × Σ 1[Π_dev(t) > Π_hon(t)]
 ```
-BFT-stable if β < 1/3.
+BFT-stable if β < 1/2.
 
 ### ROI (Return on Investment)
 ```

@@ -325,7 +325,7 @@ def run_once(
     ROI_mean = float(ROI_per_miner.mean())
     ROI_std = float(ROI_per_miner.std())
     
-    stable_bft = theta_bar < (1/3)
+    stable_bft = theta_bar < (1/2)
 
     dt_arr = np.array(dt_list)
     pr_D_ge_1 = float((dt_arr >= 1.0).mean())

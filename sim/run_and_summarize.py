@@ -158,8 +158,8 @@ def create_summary_table(results_path):
         
         f.write("## 3. Key Findings\n\n")
         f.write("### ⚠️ Warnings:\n")
-        if results['theta_bar'].mean() > 0.33:
-            f.write(f"- **theta_bar = {results['theta_bar'].mean():.4f}**: Does not satisfy BFT stability condition (theta_bar > 1/3)\n")
+        if results['theta_bar'].mean() > 0.5:
+            f.write(f"- **theta_bar = {results['theta_bar'].mean():.4f}**: Does not satisfy BFT stability condition (theta_bar > 1/2)\n")
         if results['ROI_mean'].mean() < 0:
             f.write(f"- **ROI = {results['ROI_mean'].mean():.4f}**: Costs exceed revenue (negative ROI)\n")
         
