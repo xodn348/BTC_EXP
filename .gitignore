@@ -95,3 +95,6 @@ log/*.log
 dist/
 build/
 *.egg-info/
+
+# Simulation run logs at root
+/sim_run*.log
